@@ -6,7 +6,8 @@
 #include <cmath>
 #include <iostream>
 #include <iomanip>
-#include "LZespolona.hh"
+//#include "LZespolona.hh"
+#include "Draw3D_api_interface.hh"
 
 template<class T, int SIZE>
 class SWektor 
@@ -30,7 +31,7 @@ class SWektor
   T & operator[] (int indeks);                    //Zwraca liczbę wskazaną indeksem
   int Pobierz_Wymiar() const;                     //Zwraca liczbę wymiaru/rozmiaru wektora
   const T & Pobierz_dane() const;                 //Zwraca adres na tablicę zmiennych przechowywaną przez wektor
-                          
+  const drawNS::Point3D P3D()const;
 };
 template<class T, int SIZE>
 std::istream& operator >> (std::istream &Strm, SWektor<T, SIZE> &Wek);

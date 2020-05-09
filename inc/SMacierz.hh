@@ -2,7 +2,6 @@
 #define SMACIERZ_HH
 
 #include "SWektor.hh"
-#include "LZespolona.hh"
 
 template <class T, int SIZE>
 class SMacierz

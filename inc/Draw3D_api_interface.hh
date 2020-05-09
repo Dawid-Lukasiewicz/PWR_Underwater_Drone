@@ -14,6 +14,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <vector>
 #include <string>
 #include <iostream>
+#include <memory>
 
 /*!
  * \file Draw3D_api_interface.hh

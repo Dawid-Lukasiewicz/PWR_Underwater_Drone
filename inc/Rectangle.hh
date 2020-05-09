@@ -1,26 +1,19 @@
-#include"Figura.hh"
+#include"Figure.hh"
+
+#ifndef RECTANGLE
+#define RECTANGLE
 
 class Rectangle : public Figure
 {
     protected:
-    double A[ROZMIAR],B[ROZMIAR],C[ROZMIAR],D[ROZMIAR];
+    Vector3D Nodes[8];
+    
 
     public:
-    Rectangle(SWektor<double, ROZMIAR> A, SWektor<double, ROZMIAR> B)
-    {
+    Rectangle(const Vector3D *nodes, const Vector3D &center, const Matrix3D &rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr);
+    void draw() override;
+    void move(double length, double angle) override;
+    void rotate(double angle) override;
+};
 
-    }
-    double Obwód() const override
-    { 
-        double pom[ROZMIAR];
-        for (int i=0; i<ROZMIAR; i++)
-        {
-            
-        }
-        
-        SWektor<double,ROZMIAR> Vec1, Vec2;
-        return ;
-    }
-
-
-}
+#endif

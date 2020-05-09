@@ -158,6 +158,13 @@ double dlugosc(SWektor<T,SIZE> & W2)
 }
 
 template<class T, int SIZE>
+const drawNS::Point3D SWektor<T,SIZE>::P3D()const
+{
+    drawNS::Point3D point(dane[0],dane[1],dane[2]);
+    return point;
+}
+
+template<class T, int SIZE>
 std::istream& operator >> (std::istream &Strm, SWektor<T, SIZE> &Wek)
 {
     
