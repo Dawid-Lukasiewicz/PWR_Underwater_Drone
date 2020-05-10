@@ -109,6 +109,13 @@ SMacierz<T, SIZE> SMacierz<T, SIZE>::operator *(const SMacierz<T, SIZE> & M)cons
 }
 
 template<class T, int SIZE>
+SMacierz<T,SIZE> SMacierz<T,SIZE>::operator *=(const SMacierz & M)
+{
+    *this=*this*M;
+    return *this*M;
+}
+
+template<class T, int SIZE>
 SMacierz<T,SIZE> SMacierz<T,SIZE>::operator *(const T & M)const
 {
     SMacierz<T,SIZE> mnozenie;

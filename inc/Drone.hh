@@ -5,13 +5,20 @@
 
 class Drone : public Rectangle
 {
-    double Face;
+    double Head;
 
     public:
+    Drone() = delete;
+    Drone(const Vector3D *nodes, const Vector3D &center, const MatrixRot &rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr);
+    ~Drone();
+    //void move(double length, double angle);
+    //void rotate(double angle);
     void move_right(double lenght);
     void move_left(double lenght);
     void move_forward(double lenght);
     void move_back(double length);
+    void interface();
+    void draw()override;
 
 };
 

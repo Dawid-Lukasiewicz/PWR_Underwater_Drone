@@ -19,6 +19,7 @@ class SMacierz
     SMacierz operator + (const SMacierz & M)const;                  //Dodawanie macierzy
     SMacierz operator -(const SMacierz & M)const;                   //Odejmowanie macierzy
 	SMacierz operator *(const SMacierz & M)const;                   //Mnożenie macierzy
+    SMacierz operator *=(const SMacierz & M);                       //Mnożenie macierzy i przypisanie
     SMacierz operator *(const T & M)const;                          //Macierz pomnożona przez liczbę
     SWektor<T, SIZE> operator *(const SWektor<T, SIZE> & W)const;   //Mnożenie macierzy prze wektor
 	SMacierz transponowanie()const;                                 //Zwraca macierz transponowaną                                    ///
