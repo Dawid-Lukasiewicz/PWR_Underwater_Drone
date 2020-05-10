@@ -10,7 +10,7 @@ class Rectangle : public Figure
     
 
     public:
-    Rectangle(const Vector3D *nodes, const Vector3D &center, const Matrix3D &rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr);
+    Rectangle(const Vector3D *nodes, const Vector3D &center, const MatrixRot &rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr);
     void draw() override;
     void move(double length, double angle) override;
     void rotate(double angle) override;

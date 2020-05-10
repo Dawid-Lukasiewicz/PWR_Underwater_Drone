@@ -14,20 +14,23 @@ void wait4key() {
 }
 
 int main()
-{
-    cout<<"Here i am1"<<endl;
-    Matrix3D Mac;
+{   
+    std::ifstream plik;
+    plik.open("plik_dane.txt", std::fstream::out);
+    MatrixRot Mac;
     Vector3D Vec, Vec2[8];
     for(int i=0; i<8; i++)
-    {
-        cin >> Vec2[i];
-    }
-    cout<<"Here i am2"<<endl;
+        plik >> Vec2[i];
+    plik.close();
     std::shared_ptr<drawNS::APIGnuPlot3D> g = std::make_shared<drawNS::APIGnuPlot3D>(100,-100,100,-100,100,-100,-1);
     Rectangle A (Vec2, Vec, Mac, g);
-    cout<<"Here i am3"<<endl;
     A.draw();
-    cout<<"Here i am4"<<endl;
     wait4key();
+    A.move(100,45);
+    wait4key();
+    A.rotate(45);
+    wait4key();
+    //A.draw();
+    //wait4key();
     return 0;
 }

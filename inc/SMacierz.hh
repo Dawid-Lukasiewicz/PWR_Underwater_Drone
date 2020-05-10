@@ -6,6 +6,8 @@
 template <class T, int SIZE>
 class SMacierz
 {
+    protected:
+
     int Rozmiar = ROZMIAR;
     SWektor<T, SIZE> Wek[SIZE];
 

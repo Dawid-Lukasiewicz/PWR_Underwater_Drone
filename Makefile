@@ -6,20 +6,20 @@ CPPFLAGS= -c -Iinc -Wall -pedantic -std=c++17
 __start__: dron
 
 
-dron: obj/main.o obj/SWektor.o obj/SMacierz.o obj/Rectangle.o obj/Dr3D_gnuplot_api.o obj/Templates.o
-	g++ -o dron obj/main.o obj/SWektor.o obj/SMacierz.o obj/Rectangle.o obj/Dr3D_gnuplot_api.o\
+dron: obj/main.o obj/SWektor.o obj/MatrixRot.o obj/Rectangle.o obj/Dr3D_gnuplot_api.o obj/Templates.o
+	g++ -o dron obj/main.o obj/SWektor.o obj/MatrixRot.o obj/Rectangle.o obj/Dr3D_gnuplot_api.o\
                                    	obj/Templates.o -lpthread
 
-obj/main.o: src/main.cpp inc/SMacierz.hh inc/SWektor.hh
+obj/main.o: src/main.cpp inc/MatrixRot.hh inc/SWektor.hh
 	g++ ${CPPFLAGS} -o obj/main.o src/main.cpp
 
 obj/SWektor.o: src/SWektor.cpp inc/SWektor.hh
 	g++ ${CPPFLAGS} -o obj/SWektor.o src/SWektor.cpp
 
-obj/SMacierz.o: src/SMacierz.cpp inc/SMacierz.hh
-	g++ ${CPPFLAGS} -o obj/SMacierz.o src/SMacierz.cpp 
+obj/MatrixRot.o: src/MatrixRot.cpp inc/MatrixRot.hh
+	g++ ${CPPFLAGS} -o obj/MatrixRot.o src/MatrixRot.cpp
 
-obj/Rectangle.o: src/Rectangle.cpp inc/Figure.hh
+obj/Rectangle.o: src/Rectangle.cpp inc/Figure.hh inc/MatrixRot.hh
 	g++ ${CPPFLAGS} -o obj/Rectangle.o src/Rectangle.cpp
 	
 obj/Dr3D_gnuplot_api.o: src/Dr3D_gnuplot_api.cpp inc/Dr3D_gnuplot_api.hh
