@@ -17,8 +17,10 @@ void Drone::draw()
     Rectangle::draw();
     GnuPtr->erase_shape(Head);
     Head=GnuPtr->draw_polyhedron(vector<vector<drawNS::Point3D>>
-    {{(Center+Rotation*Nodes[2]).P3D(),(Center+Rotation*Nodes[3]).P3D()},
-    {(Center+Rotation*Nodes[6]).P3D(),(Center+Rotation*Nodes[7]).P3D()}},"red");
+    {{(Center+Rotation*Nodes[1]).P3D(),(Center+Rotation*Nodes[2]).P3D()},
+    {(Center+Rotation*Nodes[5]).P3D(),(Center+Rotation*Nodes[6]).P3D()}
+    },
+    "red");
     GnuPtr->redraw();
 }
 /*
@@ -27,16 +29,35 @@ void Drone::rotate(double angle)
     Rectangle::rotate(angle);
 }
 */
+
+void Drone::move_to(const Vector3D & vec)
+{
+    Center = vec;
+    GnuPtr->erase_shape(Head);
+    draw();
+}
+
+void Drone::move_to(double x,double y,double z)
+{
+    Center[0]=x;
+    Center[1]=y;
+    Center[2]=z;
+    GnuPtr->erase_shape(Head);
+    draw();
+}
+
 void Drone::move_right(double length)
 {
-    move(length,-90);
+    rotate(90);
+    move(length,0);
     draw();
     //GnuPtr->erase_shape(Head);
 }
 
 void Drone::move_left(double length)
 {
-    move(length,90);
+    rotate(-90);
+    move(length,0);
     draw();
     //GnuPtr->erase_shape(Head);
 }
@@ -50,7 +71,8 @@ void Drone::move_forward(double length)
 
 void Drone::move_back(double length)
 {
-    move(length, 180);
+    rotate(180);
+    move(length,0);
     draw();
     //GnuPtr->erase_shape(Head);
 }

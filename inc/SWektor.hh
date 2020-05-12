@@ -27,6 +27,8 @@ class SWektor
   SWektor operator -=(const SWektor & W2);        //Odejmowanie wektorów od istniejącego wektora
   SWektor operator -(const SWektor & W2)const;    //Odejmowanie wektorów
   SWektor operator *(const T & stala)const;       //Mnożenie wektora przez liczbę
+  bool operator ==(const SWektor & W2)const;
+  bool operator !=(const SWektor & W2)const;
   const T & operator[] (int indeks)const;         //Zwraca liczbę wskazaną indeksem i nie zmienia jej
   T & operator[] (int indeks);                    //Zwraca liczbę wskazaną indeksem
   int Pobierz_Wymiar() const;                     //Zwraca liczbę wymiaru/rozmiaru wektora

@@ -146,6 +146,23 @@ T SWektor<T, SIZE>::operator *(const SWektor & W2)const
     return skalar;
 }
 
+template<class T,int SIZE>
+bool SWektor<T,SIZE>::operator ==(const SWektor & W2)const
+{
+    for (int i=0; i<ROZMIAR; i++)
+    {
+        if(dane[i]!=W2.dane[i])
+            return false;
+    }
+    return true;    
+}
+
+template<class T,int SIZE>
+bool SWektor<T,SIZE>::operator !=(const SWektor & W2)const
+{
+    return !(*this==W2);
+}
+
 template<class T, int SIZE>
 double dlugosc(SWektor<T,SIZE> & W2)
 {

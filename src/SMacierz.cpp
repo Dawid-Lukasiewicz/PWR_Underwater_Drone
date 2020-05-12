@@ -19,6 +19,16 @@ SMacierz<T, SIZE>::SMacierz(SWektor<T, SIZE> *Nowy)
 }
 
 template<class T, int SIZE>
+SMacierz<T,SIZE>::SMacierz(T tab[ROZMIAR][ROZMIAR])
+{
+    for(int i=0; i<Rozmiar; i++)
+    {
+        for(int j=0; j<Rozmiar; j++)
+            Wek[i][j]=tab[i][j];
+    }
+}
+
+template<class T, int SIZE>
 SMacierz<T, SIZE>::~SMacierz()
 {}
 
@@ -112,7 +122,7 @@ template<class T, int SIZE>
 SMacierz<T,SIZE> SMacierz<T,SIZE>::operator *=(const SMacierz & M)
 {
     *this=*this*M;
-    return *this*M;
+    return *this;
 }
 
 template<class T, int SIZE>
@@ -143,6 +153,23 @@ SWektor<T, SIZE> SMacierz<T, SIZE>::operator *(const SWektor<T, SIZE> & W)const
         std::cerr << "Nieprawidłowe rozmiary" << std::endl;
         exit(1);
     }
+}
+
+template<class T, int SIZE>
+bool SMacierz<T,SIZE>::operator ==(const SMacierz & M)const
+{
+    for (int i=0; i<ROZMIAR; i++)
+    {
+        if(Wek[i]!=M.Wek[i])
+            return false;
+    }
+    return true;
+}
+
+template<class T, int SIZE>
+bool SMacierz<T,SIZE>::operator !=(const SMacierz & M)const
+{
+    return !(*this==M);
 }
 
 template<class T, int SIZE>

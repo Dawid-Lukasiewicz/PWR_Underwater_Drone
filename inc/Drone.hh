@@ -13,6 +13,8 @@ class Drone : public Rectangle
     ~Drone();
     //void move(double length, double angle);
     //void rotate(double angle);
+    void move_to(const Vector3D & vec);
+    void move_to(double x,double y,double z);
     void move_right(double lenght);
     void move_left(double lenght);
     void move_forward(double lenght);

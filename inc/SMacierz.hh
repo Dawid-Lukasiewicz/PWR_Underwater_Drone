@@ -15,12 +15,15 @@ class SMacierz
 
     SMacierz();                                                     //Konstruktor bezparametryczny
     SMacierz(SWektor<T, SIZE> *tab);                                //Kontruktor przyjmujący tablicę wektorów jako argument
+    SMacierz(T tab[ROZMIAR][ROZMIAR]);                                
     ~SMacierz();                                                    //Destruktor
     SMacierz operator + (const SMacierz & M)const;                  //Dodawanie macierzy
     SMacierz operator -(const SMacierz & M)const;                   //Odejmowanie macierzy
 	SMacierz operator *(const SMacierz & M)const;                   //Mnożenie macierzy
     SMacierz operator *=(const SMacierz & M);                       //Mnożenie macierzy i przypisanie
     SMacierz operator *(const T & M)const;                          //Macierz pomnożona przez liczbę
+    bool operator ==(const SMacierz & M)const;
+    bool operator !=(const SMacierz & M)const;
     SWektor<T, SIZE> operator *(const SWektor<T, SIZE> & W)const;   //Mnożenie macierzy prze wektor
 	SMacierz transponowanie()const;                                 //Zwraca macierz transponowaną                                    ///
     T Wyznacznik_Gaussa() const;                                    //Zwraca wyznacznik
