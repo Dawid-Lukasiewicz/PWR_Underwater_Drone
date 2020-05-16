@@ -4,6 +4,7 @@
 #include "SMacierz.hh"
 #include "Rectangle.hh"
 #include "Drone.hh"
+#include "Rotator.hh"
  
 using namespace std;
 using Vector3D = SWektor<double,ROZMIAR>;
@@ -16,16 +17,39 @@ void wait4key() {
 
 int main()
 {   
-  double angle, length;
+    double angle, length,tab[3]={15,0,0};
     std::ifstream plik;
-    plik.open("plik_dane.txt", std::fstream::out);
     MatrixRot Mac;
-    Vector3D Vec, Vec2[8];
+    Vector3D Vec, Vec2[8],Vec4(tab);
+
+    plik.open("plik_body.txt", std::fstream::out);
     for(int i=0; i<8; i++)
         plik >> Vec2[i];
     plik.close();
+
+    double dVec3[3];
+
+    plik.open("plik_rotators.txt", std::fstream::out);
+    for(int i=0; i<3; i++)
+        plik >> dVec3[i];
+    plik.close();
+    
+    Vector3D Vec3(dVec3);
+    
     std::shared_ptr<drawNS::APIGnuPlot3D> g = std::make_shared<drawNS::APIGnuPlot3D>(80,-80,80,-80,80,-80,-1);
-    Drone Drone1 (Vec2, Vec, Mac, g);
+    std::shared_ptr<Rotator> Rotator1 = std::make_shared<Rotator>(dVec3,Vec,Mac,g);
+
+    //SixPrism y(Vec3,Vec4,Mac,g);
+    //y.draw();
+    Rotator1->draw();
+    wait4key();
+    Rotator1->move(40,0);
+    //y.move(40,0);
+    wait4key();
+    /*
+    Drone Drone1 (Rotator1,Vec2, Vec, Mac, g);
+    //SixPrism Prism(Vec3, Vec, Mac, g);
+    
     Drone1.draw();
     char znak;
     do{
@@ -76,13 +100,13 @@ int main()
       case 'r':
         cout<<"Długość w górę: ";
         cin>>length;
-        Drone1.moveUpDown(length,90);
+        Drone1.moveUpDown(length,90.0);
         break;
 
       case 'f':
         cout<<"Długość w dół: ";
         cin>>length;
-        Drone1.moveUpDown(length,-90);
+        Drone1.moveUpDown(length,-90.0);
         break;
 
       case 'z':
@@ -100,5 +124,5 @@ int main()
       }
     }
       while(znak!='q');
-    return 0;
+    return 0;*/
 }

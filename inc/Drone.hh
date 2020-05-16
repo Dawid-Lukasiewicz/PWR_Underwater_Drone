@@ -2,14 +2,16 @@
 #define DRONE
 
 #include"Rectangle.hh"
+#include"Rotator.hh"
 
 class Drone : public Rectangle
 {
-    double Head;
+    double Head,RotatorId[2];
+    std::shared_ptr<Rotator> RotatorPtr[2];
 
     public:
     Drone() = delete;
-    Drone(const Vector3D *nodes, const Vector3D &center, const MatrixRot &rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr);
+    Drone(std::shared_ptr<Rotator> rotator1, const Vector3D *nodes, const Vector3D &center, const MatrixRot &rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr);
     ~Drone();
     //void move(double length, double angle);
     //void rotate(double angle);

@@ -225,13 +225,13 @@ T SMacierz<T,SIZE>::Wyznacznik_Gaussa() const
     {
         for(int i=0; i<M.Rozmiar; i++)//Przestawianie wierszy
         {
-            if(M[i][i]<E)
+            if(abs(M[i][i])<E)
             {
                 int j;
                 for(j=i; j<M.Rozmiar; j++)
                 {
 
-                    if(M[j][i]>E)
+                    if(abs(M[j][i])>E)
                     {
                         SWektor<T,SIZE> Pom = M[i]; 
                         M[i] = M[j];
@@ -248,7 +248,7 @@ T SMacierz<T,SIZE>::Wyznacznik_Gaussa() const
             }
             for(int j=i+1; j<M.Rozmiar; j++) //Zerowanie wierszy
             {
-                if(M[i][i]<E)
+                if(abs(M[i][i])<E)
                     continue;
                 
                 T wielokrotnosc = M[j][i]/M[i][i];

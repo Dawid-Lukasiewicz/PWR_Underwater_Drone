@@ -10,7 +10,9 @@ class Rectangle : public Figure
     
 
     public:
+    Rectangle() = delete;
     Rectangle(const Vector3D *nodes, const Vector3D &center, const MatrixRot &rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr);
+    ~Rectangle();
     void draw() override;
     void move(double length, double angle) override;
     void moveUpDown(double length, double angle) override;

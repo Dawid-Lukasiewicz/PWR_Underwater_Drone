@@ -1,10 +1,27 @@
 #include"Drone.hh"
 
 
-Drone::Drone(const Vector3D *nodes, const Vector3D &center, const MatrixRot &rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr)
+Drone::Drone(std::shared_ptr<Rotator> rotator1, const Vector3D *nodes, const Vector3D &center, const MatrixRot &rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr)
 : Rectangle(nodes, center, rotation, gnuptr)
 {
+    RotatorPtr[0]=rotator1;
+    std::shared_ptr<Rotator> rotator2=std::make_shared<Rotator>(*rotator1);
+    RotatorPtr[1]=rotator2;
     Head=0;
+    //RotatorId[0]=0;
+    //RotatorId[1]=0;
+
+    //Ustawienie centrum wirników
+    Vector3D Pom1,Pom2;
+    Pom1[0]=Nodes[0][0];
+    Pom1[1]=Nodes[0][1]/2.0;
+    Pom1[2]=Center[2];
+    Pom2[0]=Nodes[0][0];
+    Pom2[1]=-Nodes[0][1]/2.0;
+    Pom2[2]=Center[2];
+
+    RotatorPtr[0]->GetCenter()+=Center+Pom1;
+    RotatorPtr[1]->GetCenter()+=Center+Pom2;
 }
 
 Drone::~Drone()
@@ -13,14 +30,30 @@ Drone::~Drone()
 void Drone::draw()
 {
     using namespace std;
-    
+
     Rectangle::draw();
     GnuPtr->erase_shape(Head);
+    GnuPtr->erase_shape(RotatorId[0]);
+    GnuPtr->erase_shape(RotatorId[1]);
+    
+    Vector3D Pom1,Pom2;
+    Pom1[0]=Nodes[0][0];
+    Pom1[1]=Nodes[0][1]/2.0;
+    Pom1[2]=Center[2];
+    Pom2[0]=Nodes[0][0];
+    Pom2[1]=-Nodes[0][1]/2.0;
+    Pom2[2]=Center[2];
+    RotatorPtr[0]->GetCenter()+=Center+Pom1;
+    RotatorPtr[1]->GetCenter()+=Center+Pom2;
+
     Head=GnuPtr->draw_polyhedron(vector<vector<drawNS::Point3D>>
     {{(Center+Rotation*Nodes[1]).P3D(),(Center+Rotation*Nodes[2]).P3D()},
-    {(Center+Rotation*Nodes[5]).P3D(),(Center+Rotation*Nodes[6]).P3D()}
-    },
+    {(Center+Rotation*Nodes[5]).P3D(),(Center+Rotation*Nodes[6]).P3D()},
+    {(Center+Rotation*Nodes[1]).P3D(),(Center+Rotation*Nodes[6]).P3D()},
+    {(Center+Rotation*Nodes[2]).P3D(),(Center+Rotation*Nodes[5]).P3D()}},
     "red");
+    RotatorPtr[0]->draw();
+    RotatorPtr[1]->draw();
     GnuPtr->redraw();
 }
 /*
