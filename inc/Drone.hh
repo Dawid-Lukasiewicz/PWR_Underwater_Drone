@@ -6,7 +6,7 @@
 
 class Drone : public Rectangle
 {
-    double Head,RotatorId[2];
+    double Head;
     std::shared_ptr<Rotator> RotatorPtr[2];
 
     public:
@@ -14,7 +14,7 @@ class Drone : public Rectangle
     Drone(std::shared_ptr<Rotator> rotator1, const Vector3D *nodes, const Vector3D &center, const MatrixRot &rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr);
     ~Drone();
     //void move(double length, double angle);
-    //void rotate(double angle);
+    void rotate(double angle);
     void move_to(const Vector3D & vec);
     void move_to(double x,double y,double z);
     void move_right(double lenght);

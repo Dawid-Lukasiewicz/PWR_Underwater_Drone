@@ -6,7 +6,7 @@
 class SixPrism : public Figure
 {
 protected:
-Vector3D Node;
+Vector3D Nodes[12];
     
 public:
     SixPrism() = delete;

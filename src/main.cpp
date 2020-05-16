@@ -40,15 +40,8 @@ int main()
     std::shared_ptr<Rotator> Rotator1 = std::make_shared<Rotator>(dVec3,Vec,Mac,g);
 
     //SixPrism y(Vec3,Vec4,Mac,g);
-    //y.draw();
-    Rotator1->draw();
-    wait4key();
-    Rotator1->move(40,0);
-    //y.move(40,0);
-    wait4key();
-    /*
-    Drone Drone1 (Rotator1,Vec2, Vec, Mac, g);
     //SixPrism Prism(Vec3, Vec, Mac, g);
+    Drone Drone1 (Rotator1,Vec2, Vec, Mac, g);
     
     Drone1.draw();
     char znak;
@@ -124,5 +117,5 @@ int main()
       }
     }
       while(znak!='q');
-    return 0;*/
+    return 0;
 }
