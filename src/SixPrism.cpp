@@ -21,22 +21,12 @@ SixPrism::~SixPrism()
 void SixPrism::draw()
 {
     using namespace std;
-    /*
-    MatrixRot PomRot(60.0), PomRot2=Rotation;
+
     Vector3D P[12];
     for (int i=0; i<6; i++)
     {
-        PomRot2*=PomRot;
-        P[i]=Center+PomRot2*Node;
-        P[i+6]=Center+PomRot2*Node;
-        P[i+6][2]=-Node[2];
-    }
-    */
-    Vector3D P[12];
-    for (int i=0; i<6; i++)
-    {
-        P[i]=Center+Nodes[i];
-        P[i+6]=Center+Nodes[i+6];
+        P[i]=Center+Rotation*Nodes[i];
+        P[i+6]=Center+Rotation*Nodes[i+6];
     }
     GnuPtr->erase_shape(Id);
     Id=GnuPtr->draw_polyhedron(vector<vector<drawNS::Point3D>>
@@ -53,7 +43,7 @@ void SixPrism::move(double length, double angle)
     MatrixRot PomRot(angle);
 
     PomRot*=Rotation;
-
+    //std::cout<<"Rot Center przed: "<<Center<<std::endl;
     for (int i=0; i<100; i++)
     {
         Center+=PomRot*move;    

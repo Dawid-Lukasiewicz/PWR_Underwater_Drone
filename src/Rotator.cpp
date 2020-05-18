@@ -12,8 +12,6 @@ Rotator::Rotator(const Vector3D node, const Vector3D & center, const MatrixRot &
     {
         Nodes[i]=MacRot*Nodes[i];
     }
-    
-    //Rotation*=MacRot;
 
 }
 
@@ -24,13 +22,16 @@ Rotator::~Rotator()
 
 void Rotator::draw(const Vector3D & attach)
 {
+    //Center+=attach;
     //SixPrism::draw();
+    
     using namespace std;
     Vector3D P[12];
+    //std::cout<<"attach: "<<attach<<std::endl;
     for (int i=0; i<6; i++)
     {
-        P[i]=attach+Center+Nodes[i];
-        P[i+6]=attach+Center+Nodes[i+6];
+        P[i]=attach+Rotation*(Center+Nodes[i]);
+        P[i+6]=attach+Rotation*(Center+Nodes[i+6]);
     }
     GnuPtr->erase_shape(Id);
     Id=GnuPtr->draw_polyhedron(vector<vector<drawNS::Point3D>>
@@ -42,17 +43,16 @@ void Rotator::draw(const Vector3D & attach)
 
 void Rotator::rotate(double & angle, const Vector3D & attach)
 {
-    MatrixRot PomRot(angle/100);
-    Vector3D point=attach;
-    std::cout<<"point przed: "<<point<<std::endl;
-    for (int i=0; i<100; i++)
-    {
-        point=PomRot*point;
-        Rotation*=PomRot;
-        GnuPtr->erase_shape(Id);
-        draw(point);
-    }
-    std::cout<<"point po: "<<point<<std::endl;
+    MatrixRot PomRot(-angle); //Tu nie powinno być minusów
+    Center=(PomRot*Center)+attach;
+    SixPrism::rotate(-angle);
+    /*
+    MatrixRot PomRot(angle);
+    Rotation*=PomRot;
+    GnuPtr->erase_shape(Id);
+    //std::cout<<"point: "<<point<<std::endl;
+    draw(attach);
+    */
 }
 
 Vector3D & Rotator::GetCenter()

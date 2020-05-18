@@ -6,9 +6,10 @@ CPPFLAGS= -c -Iinc -Wall -pedantic -std=c++17
 __start__: dron
 
 
-dron: obj/main.o obj/SWektor.o obj/MatrixRot.o obj/Rectangle.o obj/SixPrism.o obj/Rotator.o obj/Drone.o obj/Dr3D_gnuplot_api.o obj/Templates.o
-	g++ -o dron obj/main.o obj/SWektor.o obj/MatrixRot.o obj/Rectangle.o obj/SixPrism.o obj/Rotator.o obj/Drone.o obj/Dr3D_gnuplot_api.o\
-                                   	obj/Templates.o -lpthread
+dron: obj/main.o obj/SWektor.o obj/MatrixRot.o obj/Rectangle.o obj/SixPrism.o obj/Rotator.o\
+									obj/Drone.o obj/Surface.o obj/Dr3D_gnuplot_api.o obj/Templates.o
+	g++ -o dron obj/main.o obj/SWektor.o obj/MatrixRot.o obj/Rectangle.o obj/SixPrism.o obj/Rotator.o\
+                                   	obj/Drone.o obj/Surface.o obj/Dr3D_gnuplot_api.o obj/Templates.o -lpthread
 
 obj/main.o: src/main.cpp inc/MatrixRot.hh inc/SWektor.hh
 	g++ ${CPPFLAGS} -o obj/main.o src/main.cpp
@@ -31,6 +32,9 @@ obj/Rotator.o: src/Rotator.cpp inc/Rotator.hh
 obj/Drone.o: src/Drone.cpp inc/Drone.hh
 	g++ ${CPPFLAGS} -o obj/Drone.o src/Drone.cpp
 	
+obj/Surface.o: src/Surface.cpp inc/Surface.hh inc/Obstacle.hh
+	g++ ${CPPFLAGS} -o obj/Surface.o src/Surface.cpp
+	
 obj/Dr3D_gnuplot_api.o: src/Dr3D_gnuplot_api.cpp inc/Dr3D_gnuplot_api.hh
 	g++ ${CPPFLAGS} -o obj/Dr3D_gnuplot_api.o src/Dr3D_gnuplot_api.cpp
 
@@ -41,4 +45,4 @@ obj/Templates.o: src/Templates.cpp src/SMacierz.cpp inc/SMacierz.hh src/SWektor.
 	g++ ${CPPFLAGS} -o obj/Templates.o src/Templates.cpp
 
 clean:
-	rm -f obj/*.o uklad_rownan
+	rm -f obj/*.o dron

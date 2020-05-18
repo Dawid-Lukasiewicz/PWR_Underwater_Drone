@@ -23,6 +23,8 @@ class Figure
     virtual ~Figure() {}
     virtual void draw() {}
     virtual void move(double length, double angle) {}
+    //virtual void move_to(const Vector3D & vec) {}
+    //virtual void move_to(double x,double y,double z) {}
     virtual void moveUpDown(double length, double angle) {}
     virtual void moveZ(double length, double angle) {}
     virtual void rotate(double angle) {}
