@@ -35,50 +35,53 @@ void Drone::draw()
     {(Center+Rotation*Nodes[2]).P3D(),(Center+Rotation*Nodes[5]).P3D()}},
     "red");
     Rectangle::draw();
-    RotatorPtr[0]->SixPrism::draw();
-    RotatorPtr[1]->SixPrism::draw();
+    RotatorPtr[0]->Rotator::draw(Center);
+    RotatorPtr[1]->Rotator::draw(Center);
     GnuPtr->redraw();
     //std::cout<<"Center: "<<Center<<std::endl;
 }
 
 void Drone::rotate(double angle)
 {
-    Rectangle::rotate(angle);
-    RotatorPtr[0]->Rotator::rotate(angle,Drone::Center);
-    RotatorPtr[1]->Rotator::rotate(angle,Drone::Center);
-    /*
     double angle2=angle/100;
     MatrixRot PomRot(angle2);    
     for (int i=0; i<100; i++)
     {
-        //std::cout<<"Center+Nodes[0]*0.3: "<<Center+Nodes[0]*0.3<<std::endl;
-        Rotation*=PomRot;
-        RotatorPtr[0]->Rotator::rotate(angle2,Center);
-        RotatorPtr[1]->Rotator::rotate(angle2,Center);
+
+        //Rotation*=PomRot;
+        Rectangle::rotate(angle2);
+        RotatorPtr[0]->SixPrism::rotate(angle2);
+        RotatorPtr[1]->SixPrism::rotate(angle2);
         Drone::draw();
     }
-    */
+    
 }
 
-void Drone::move(double length, double angle)
+void Drone::move(double length)
 {
-    /*
-    Rectangle::move(length,angle);
-    RotatorPtr[0]->move(length,angle);
-    RotatorPtr[1]->move(length,angle);
-    */
-    double dane[3]={length/100,0,0};
-    Vector3D move(dane);
-    MatrixRot PomRot(angle);
-    PomRot*=Rotation;
+    
+    double length1=length/100;
+    for(int i=0; i<100; i++)
+    {
+        Rectangle::move(length1);
+        //RotatorPtr[0]->move(length1);
+        //RotatorPtr[1]->move(length1);
+        draw();
+    }
+}
+
+void Drone::moveUpDown(double length, double angle)
+{
+    double length1=length/100;
     for (int i=0; i<100; i++)
     {
-        Center+=PomRot*move;    
-        RotatorPtr[0]->GetCenter()+=PomRot*move;
-        RotatorPtr[1]->GetCenter()+=PomRot*move;
-        GnuPtr->erase_shape(Id);
-        Drone::draw();
+        Rectangle::moveUpDown(length1,angle);
+        //RotatorPtr[0]->moveUpDown(length1,angle1);
+        //RotatorPtr[1]->moveUpDown(length1,angle1);
+        draw();    
     }
+    
+    
 }
 
 void Drone::move_to(const Vector3D & vec)

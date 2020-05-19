@@ -36,47 +36,39 @@ void SixPrism::draw()
     GnuPtr->redraw();
 }
 
-void SixPrism::move(double length, double angle)
+void SixPrism::move(double length)
 {
-    double dane[3]={length/100,0,0};
+    double dane[3]={length,0,0};
     Vector3D move(dane);
-    MatrixRot PomRot(angle);
 
-    PomRot*=Rotation;
-    //std::cout<<"Rot Center przed: "<<Center<<std::endl;
-    for (int i=0; i<100; i++)
-    {
-        Center+=PomRot*move;    
-        GnuPtr->erase_shape(Id);
-        draw();
-    }
+    //for (int i=0; i<100; i++)
+    Center+=Rotation*move;    
+    GnuPtr->erase_shape(Id);
+    //draw();
+
 }
 
 void SixPrism::moveUpDown(double length, double angle)
 {
-    double dane[3]={length/100,0,0}, pi=3.14, rad=pi*angle/180;
-    //std::cout<<"Rad: "<<rad<<std::endl;
+    double dane[3]={length,0,0}, pi=3.14, rad=pi*angle/180;
     double daneRot[3][3]={{cos(rad),0,sin(rad)},{0,1,0},{-sin(rad),0,cos(rad)}};
     Vector3D move(dane);
     SMacierz<double,3> Mat1(daneRot);
     MatrixRot PomRot(Mat1);
-    move=Rotation*move;
 
-    for (int i=0; i<100; i++)
-    {
-        Center+=PomRot*move;
-        GnuPtr->erase_shape(Id);
-        draw();
-    }
+    //for (int i=0; i<100; i++)
+    Center+=Rotation*(PomRot*move);
+    GnuPtr->erase_shape(Id);
+    //draw();
+
 }
 
 void SixPrism::rotate(double angle)
 {
-    MatrixRot PomRot(angle/100);    
-    for (int i=0; i<100; i++)
-    {
-        Rotation*=PomRot;
-        GnuPtr->erase_shape(Id);
-        draw();
-    }
+    MatrixRot PomRot(angle);    
+    //for (int i=0; i<100; i++)
+    Rotation*=PomRot;
+    GnuPtr->erase_shape(Id);
+    //draw();
+    
 }

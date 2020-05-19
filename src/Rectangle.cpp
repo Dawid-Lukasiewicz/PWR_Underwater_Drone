@@ -14,52 +14,42 @@ Rectangle::Rectangle(const Vector3D *nodes, const Vector3D &center, const Matrix
 Rectangle::~Rectangle()
 {}
 
-void Rectangle::move(double length, double angle)
+void Rectangle::move(double length)
 {
-    double dane[3]={length/100,0,0};
+    double dane[3]={length,0,0};
     Vector3D move(dane);
-    MatrixRot PomRot(angle);
-    PomRot*=Rotation;
-    //Rotation*=PomRot;
     
-    for (int i=0; i<100; i++)
-    {
-        Center+=PomRot*move;    
-        GnuPtr->erase_shape(Id);
-        draw();
-    }
+    
+    Center+=Rotation*move;    
+    //GnuPtr->erase_shape(Id);
+    //draw();
+    
     
 }
 
 void Rectangle::moveUpDown(double length, double angle)
 {
-    //std::cout<<"Angle: "<<angle<<std::endl;
-    double dane[3]={length/100,0,0}, pi=3.14, rad=pi*angle/180;
-    //std::cout<<"Rad: "<<rad<<std::endl;
+    double dane[3]={length,0,0}, pi=3.14, rad=pi*angle/180;
     double daneRot[3][3]={{cos(rad),0,sin(rad)},{0,1,0},{-sin(rad),0,cos(rad)}};
     Vector3D move(dane);
     SMacierz<double,3> Mat1(daneRot);
     MatrixRot PomRot(Mat1);
-    move=Rotation*move;
+    std::cout<<"Rotation: "<<std::endl<<Rotation<<std::endl;
+    std::cout<<"PomRot: "<<std::endl<<PomRot<<std::endl;
+    Center+=Rotation*(PomRot*move);
+    //GnuPtr->erase_shape(Id);
+    //draw();
 
-    for (int i=0; i<100; i++)
-    {
-        Center+=PomRot*move;
-        GnuPtr->erase_shape(Id);
-        draw();
-    }
 }
 
 void Rectangle::rotate(double angle)
 {
-    MatrixRot PomRot(angle/100);    
-    for (int i=0; i<100; i++)
-    {
-        Rotation*=PomRot;
-        GnuPtr->erase_shape(Id);
-        draw();
-    }
-    //std::cout<<"Rotation"<<std::endl<<Rotation<<std::endl;
+    MatrixRot PomRot(angle);    
+    
+    Rotation*=PomRot;
+    //GnuPtr->erase_shape(Id);
+    //draw();
+    
 }
 
 void Rectangle::draw()

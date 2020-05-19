@@ -14,7 +14,7 @@ class Rectangle : public Figure
     Rectangle(const Vector3D *nodes, const Vector3D &center, const MatrixRot &rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr);
     ~Rectangle();
     void draw() override;
-    void move(double length, double angle) override;
+    void move(double length) override;
     void moveUpDown(double length, double angle) override;
     void rotate(double angle) override;
 };

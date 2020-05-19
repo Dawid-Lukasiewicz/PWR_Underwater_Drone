@@ -53,13 +53,13 @@ MatrixRot::MatrixRot(double angle)
 
 MatrixRot::MatrixRot(const SMacierz<double,ROZMIAR> & nowa)
 {
-    if(abs(nowa.Wyznacznik_Gaussa())<E&&nowa.transponowanie()*nowa==nowa*nowa.transponowanie())
+    if(std::abs(nowa.Wyznacznik_Gaussa())<E&&nowa.transponowanie()*nowa==nowa*nowa.transponowanie())
     {
         std::cerr<<"Nie jest to macierz obrotu"<<std::endl;
         exit(1);
     }
     for(int i=0; i<ROZMIAR; i++)
-        Wek[i]=nowa[i];
+       Wek[i]=nowa[i];
 }
 
 MatrixRot::~MatrixRot()

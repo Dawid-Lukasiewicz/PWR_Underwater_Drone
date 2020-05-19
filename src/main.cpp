@@ -62,28 +62,28 @@ int main()
       case 'w':
         cout<<"Długość przesunięcia: ";
         cin>>length;
-        Drone1.Drone::move(length,0.0);
+        Drone1.Drone::move(length);
         break;
       
       case 's':
         cout<<"Długość przesunięcia: ";
         cin>>length;
         Drone1.Drone::rotate(180);
-        Drone1.Drone::move(length, 0.0);
+        Drone1.Drone::move(length);
         break;
 
       case 'a':
         cout<<"Długość przesunięcia: ";
         cin>>length;
         Drone1.Drone::rotate(-90);
-        Drone1.Drone::move(length, 0.0);
+        Drone1.Drone::move(length);
         break;
       
       case 'd':
         cout<<"Długość przesunięcia: ";
         cin>>length;
         Drone1.Drone::rotate(90);
-        Drone1.Drone::move(length, 0.0);
+        Drone1.Drone::move(length);
         break;
 
       case 'W':

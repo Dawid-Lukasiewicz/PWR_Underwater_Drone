@@ -43,9 +43,14 @@ void Rotator::draw(const Vector3D & attach)
 
 void Rotator::rotate(double & angle, const Vector3D & attach)
 {
-    MatrixRot PomRot(-angle); //Tu nie powinno być minusów
-    Center=(PomRot*Center)+attach;
-    SixPrism::rotate(-angle);
+    MatrixRot PomRot(-angle);
+    SixPrism::rotate(angle);
+    Center=PomRot*(attach-Center);
+    //std::cout<<"I am here"<<std::endl;
+    //MatrixRot PomRot(-angle);
+    //std::cout<<"Center przed: "<<Center<<std::endl;
+    //Center=PomRot*(attach+Center);
+    //std::cout<<"Center po: "<<Center<<std::endl;
     /*
     MatrixRot PomRot(angle);
     Rotation*=PomRot;

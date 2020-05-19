@@ -230,9 +230,11 @@ T SMacierz<T,SIZE>::Wyznacznik_Gaussa() const
                 int j;
                 for(j=i; j<M.Rozmiar; j++)
                 {
-
-                    if(abs(M[j][i])>E)
+                    //std::cout<<"Być1 "<<j<<std::endl;
+                    //std::cout<<"Wiersz1 "<<std::abs(M[j][i])<<std::endl;
+                    if(std::abs(M[j][i])>E)
                     {
+                        //std::cout<<"Być2 "<<j<<std::endl;
                         SWektor<T,SIZE> Pom = M[i]; 
                         M[i] = M[j];
                         M[j] = Pom;
@@ -242,13 +244,14 @@ T SMacierz<T,SIZE>::Wyznacznik_Gaussa() const
                 }
                 if(j == Rozmiar)//Jeśli nie ma żadnej niezerowej w kolumnie, det=0
                     {
+                        //std::cout<<"Być3 "<<j<<std::endl;
                         det = det*0;
                         return det;
                     }
             }
             for(int j=i+1; j<M.Rozmiar; j++) //Zerowanie wierszy
             {
-                if(abs(M[i][i])<E)
+                if(std::abs(M[i][i])<E)
                     continue;
                 
                 T wielokrotnosc = M[j][i]/M[i][i];
@@ -274,6 +277,7 @@ std::istream& operator >> (std::istream &Strm, SMacierz<T, SIZE> &Mac)
     }
     return Strm;
 }
+
 template<class T, int SIZE>
 std::ostream& operator << (std::ostream &Strm, const SMacierz<T, SIZE> &Mac)
 {
