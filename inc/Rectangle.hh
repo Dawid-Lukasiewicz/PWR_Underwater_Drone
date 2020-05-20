@@ -17,6 +17,7 @@ class Rectangle : public Figure
     void move(double length) override;
     void moveUpDown(double length, double angle) override;
     void rotate(double angle) override;
+    MatrixRot const GetRotation() const;
 };
 
 #endif

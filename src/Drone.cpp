@@ -35,10 +35,9 @@ void Drone::draw()
     {(Center+Rotation*Nodes[2]).P3D(),(Center+Rotation*Nodes[5]).P3D()}},
     "red");
     Rectangle::draw();
-    RotatorPtr[0]->Rotator::draw(Center);
-    RotatorPtr[1]->Rotator::draw(Center);
+    RotatorPtr[0]->Rotator::draw(Rotation,Center);
+    RotatorPtr[1]->Rotator::draw(Rotation,Center);
     GnuPtr->redraw();
-    //std::cout<<"Center: "<<Center<<std::endl;
 }
 
 void Drone::rotate(double angle)
@@ -47,11 +46,10 @@ void Drone::rotate(double angle)
     MatrixRot PomRot(angle2);    
     for (int i=0; i<100; i++)
     {
-
-        //Rotation*=PomRot;
         Rectangle::rotate(angle2);
         RotatorPtr[0]->SixPrism::rotate(angle2);
         RotatorPtr[1]->SixPrism::rotate(angle2);
+        usleep(25000);
         Drone::draw();
     }
     
@@ -64,8 +62,7 @@ void Drone::move(double length)
     for(int i=0; i<100; i++)
     {
         Rectangle::move(length1);
-        //RotatorPtr[0]->move(length1);
-        //RotatorPtr[1]->move(length1);
+        usleep(25000);
         draw();
     }
 }
@@ -76,8 +73,7 @@ void Drone::moveUpDown(double length, double angle)
     for (int i=0; i<100; i++)
     {
         Rectangle::moveUpDown(length1,angle);
-        //RotatorPtr[0]->moveUpDown(length1,angle1);
-        //RotatorPtr[1]->moveUpDown(length1,angle1);
+        usleep(25000);
         draw();    
     }
     

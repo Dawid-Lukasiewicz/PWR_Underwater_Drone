@@ -18,13 +18,7 @@ void Rectangle::move(double length)
 {
     double dane[3]={length,0,0};
     Vector3D move(dane);
-    
-    
     Center+=Rotation*move;    
-    //GnuPtr->erase_shape(Id);
-    //draw();
-    
-    
 }
 
 void Rectangle::moveUpDown(double length, double angle)
@@ -34,22 +28,18 @@ void Rectangle::moveUpDown(double length, double angle)
     Vector3D move(dane);
     SMacierz<double,3> Mat1(daneRot);
     MatrixRot PomRot(Mat1);
-    std::cout<<"Rotation: "<<std::endl<<Rotation<<std::endl;
-    std::cout<<"PomRot: "<<std::endl<<PomRot<<std::endl;
     Center+=Rotation*(PomRot*move);
-    //GnuPtr->erase_shape(Id);
-    //draw();
-
 }
 
 void Rectangle::rotate(double angle)
 {
     MatrixRot PomRot(angle);    
-    
     Rotation*=PomRot;
-    //GnuPtr->erase_shape(Id);
-    //draw();
-    
+}
+
+MatrixRot const Rectangle::GetRotation() const
+{
+    return Rotation;
 }
 
 void Rectangle::draw()
