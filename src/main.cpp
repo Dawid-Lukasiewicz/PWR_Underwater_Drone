@@ -28,20 +28,23 @@ int main()
         plik >> Vec2[i];
     plik.close();
 
-    double dVec3[3];
+    double dVec3[3], TabSurf[3]={-50,-50,40};
 
     plik.open("plik_rotators.txt", std::fstream::out);
     for(int i=0; i<3; i++)
         plik >> dVec3[i];
     plik.close();
     Vector3D Vec3(dVec3);
+    Vector3D Surftab(TabSurf);
     
     std::shared_ptr<drawNS::APIGnuPlot3D> g = std::make_shared<drawNS::APIGnuPlot3D>(100,-100,100,-100,100,-100,-1);
     std::shared_ptr<Rotator> Rotator1 = std::make_shared<Rotator>(dVec3,Vec,Mac,g);
     
-    
+    //Surface SurfBot(g,Surftab);
+    //SurfBot.draw();
     Drone Drone1 (Rotator1,Vec2, Vec, Mac, g);
     
+    wait4key();
     Drone1.draw();
     char znak;
     do{
@@ -128,7 +131,7 @@ int main()
     drawNS::Point3D TestPkt1(-20,-20,-50),TestPkt2(0,-20,-50),TestPkt3(20,-20,-50),
                     TestPkt4(-20,0,-50),TestPkt5(0,0,-50),TestPkt6(20,0,-50),
                     TestPkt7(-20,20,-50),TestPkt8(0,20,-50),TestPkt9(20,20,-50);
-    Vector3D Surftab[7][7];
+    
     PlikBottom.open("powierzchnia2.txt",std::fstream::out);
     if(PlikBottom.is_open()==true)
     {
@@ -147,7 +150,6 @@ int main()
     //SixPrism y(Vec3,Vec4,Mac,g);
     //SixPrism Prism(Vec3, Vec, Mac, g);
     //double Surftab[3]={-50,-50,0};
-    Surface SurfBot(g,Surftab);
-    SurfBot.draw();
+    
     wait4key();
     */
