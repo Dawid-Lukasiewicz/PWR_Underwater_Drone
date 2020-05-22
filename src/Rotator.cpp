@@ -25,7 +25,7 @@ void Rotator::draw(const MatrixRot &MatRot, const Vector3D & attach)
     using namespace std;
     
     Vector3D P[12];
-    revolution();
+    propulsion();
     //std::cout<<"attach: "<<attach<<std::endl;
     //P[i]=attach+Rotation*(Center+Nodes[i]);
     //P[i+6]=attach+Rotation*(Center+Nodes[i+6]);
@@ -42,7 +42,7 @@ void Rotator::draw(const MatrixRot &MatRot, const Vector3D & attach)
     
 }
 
-MatrixRot Rotator::revolution()
+MatrixRot Rotator::propulsion()
 {
     #define RAD 0.314213
     double daneRot[3][3]={{1,0,0},{0,cos(RAD),-sin(RAD)},{0,sin(RAD),cos(RAD)}};

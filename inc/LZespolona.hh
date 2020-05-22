@@ -46,5 +46,5 @@ Zespolona sprzezenie()const;
 };
 std::ostream & operator << (std::ostream & str, const Zespolona &out);
 std::istream & operator >> (std::istream & str, Zespolona &in);
-
+Zespolona abs(const Zespolona & Skl1);
 #endif

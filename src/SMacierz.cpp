@@ -1,5 +1,7 @@
 #include"SMacierz.hh"
 
+using namespace std;
+
 template<class T, int SIZE>
 SMacierz<T, SIZE>::SMacierz()
 {
@@ -232,7 +234,7 @@ T SMacierz<T,SIZE>::Wyznacznik_Gaussa() const
                 {
                     //std::cout<<"Być1 "<<j<<std::endl;
                     //std::cout<<"Wiersz1 "<<std::abs(M[j][i])<<std::endl;
-                    if(std::abs(M[j][i])>E)
+                    if(abs(M[j][i])>E)
                     {
                         //std::cout<<"Być2 "<<j<<std::endl;
                         SWektor<T,SIZE> Pom = M[i]; 
@@ -251,7 +253,7 @@ T SMacierz<T,SIZE>::Wyznacznik_Gaussa() const
             }
             for(int j=i+1; j<M.Rozmiar; j++) //Zerowanie wierszy
             {
-                if(std::abs(M[i][i])<E)
+                if(abs(M[i][i])<E)
                     continue;
                 
                 T wielokrotnosc = M[j][i]/M[i][i];

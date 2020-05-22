@@ -206,6 +206,14 @@ bool Zespolona::operator <= (const double & Skl1)const
   return !(*this>Skl1);
 }
 
+Zespolona abs(const Zespolona & Skl1)
+{
+  Zespolona Nowa;
+  Nowa.SetRe()=abs(Skl1.GetRe());
+  Nowa.SetIm()=abs(Skl1.GetIm());
+  return Nowa;
+}
+
 std::istream & operator >> (std::istream & str, Zespolona &in)
 {
   char znak;

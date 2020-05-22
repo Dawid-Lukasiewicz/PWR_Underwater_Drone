@@ -6,13 +6,16 @@ CPPFLAGS= -c -Iinc -Wall -pedantic -std=c++17
 __start__: dron
 
 
-dron: obj/main.o obj/SWektor.o obj/MatrixRot.o obj/Rectangle.o obj/SixPrism.o obj/Rotator.o\
+dron: obj/main.o obj/LZespolona.o obj/SWektor.o obj/MatrixRot.o obj/Rectangle.o obj/SixPrism.o obj/Rotator.o\
 									obj/Drone.o obj/Surface.o obj/Dr3D_gnuplot_api.o obj/Templates.o
-	g++ -o dron obj/main.o obj/SWektor.o obj/MatrixRot.o obj/Rectangle.o obj/SixPrism.o obj/Rotator.o\
+	g++ -o dron obj/main.o obj/LZespolona.o obj/SWektor.o obj/MatrixRot.o obj/Rectangle.o obj/SixPrism.o obj/Rotator.o\
                                    	obj/Drone.o obj/Surface.o obj/Dr3D_gnuplot_api.o obj/Templates.o -lpthread
 
 obj/main.o: src/main.cpp inc/MatrixRot.hh inc/SWektor.hh
 	g++ ${CPPFLAGS} -o obj/main.o src/main.cpp
+
+obj/LZespolona.o: src/LZespolona.cpp inc/LZespolona.hh
+	g++ ${CPPFLAGS} -o obj/LZespolona.o src/LZespolona.cpp
 
 obj/SWektor.o: src/SWektor.cpp inc/SWektor.hh
 	g++ ${CPPFLAGS} -o obj/SWektor.o src/SWektor.cpp
