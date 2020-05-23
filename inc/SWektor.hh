@@ -42,17 +42,7 @@ std::istream& operator >> (std::istream &Strm, SWektor<T, SIZE> &Wek);
 template<class T, int SIZE>
 std::ostream& operator << (std::ostream &Strm, const SWektor<T, SIZE> &Wek);
 
-template<class T, int SIZE>
-double SWektor<T,SIZE>::dlugosc() const
-{
-  double suma=0;
-  for(int i=0; i<SIZE; i++)
-  {
-    suma+=pow(dane[i],2);
-  }
-  return sqrt(suma);
-}
-
+/*
 template<>
 double SWektor<Zespolona, ROZMIAR>::dlugosc() const
 {
@@ -63,19 +53,5 @@ double SWektor<Zespolona, ROZMIAR>::dlugosc() const
   }
   return sqrt(suma);
 }
-
-template<class T, int SIZE>
-const drawNS::Point3D SWektor<T,SIZE>::P3D()const
-{
-    drawNS::Point3D point(dane[0],dane[1],dane[2]);
-    return point;
-}
-
-template<>
-const drawNS::Point3D SWektor<Zespolona,ROZMIAR>::P3D()const
-{
-    drawNS::Point3D point(dane[0].GetRe(),dane[1].GetRe(),dane[2].GetRe());
-    return point;
-}
-
+*/
 #endif 

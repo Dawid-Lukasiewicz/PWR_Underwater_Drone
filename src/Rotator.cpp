@@ -26,9 +26,6 @@ void Rotator::draw(const MatrixRot &MatRot, const Vector3D & attach)
     
     Vector3D P[12];
     propulsion();
-    //std::cout<<"attach: "<<attach<<std::endl;
-    //P[i]=attach+Rotation*(Center+Nodes[i]);
-    //P[i+6]=attach+Rotation*(Center+Nodes[i+6]);
     for (int i=0; i<6; i++)
     {
         P[i]=attach+MatRot*(Center+Rotation*Nodes[i]);

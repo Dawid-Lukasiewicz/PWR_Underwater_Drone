@@ -3,12 +3,12 @@ Surface::Surface(std::shared_ptr<drawNS::Draw3DAPI> gnuptr, Vector3D pointZ)
 : Obstacle(gnuptr)
 {
     std::vector<drawNS::Point3D> tmpV;
-    for(int i; i<10; i++)
+    for(int i=0; i<20; i++)
     {
         tmpV.clear();
-        for(int i; i<10; i++)
+        for(int j=0; j<20; j++)
         {
-            tmpV.push_back(drawNS::Point3D(pointZ[0], 10.0*i+pointZ[1], pointZ[2]));
+            tmpV.push_back(drawNS::Point3D(10*i+pointZ[0], 10.0*j+pointZ[1], pointZ[2]));
         }
         PointsSurf.push_back(tmpV);
     }
@@ -20,6 +20,11 @@ Surface::~Surface()
 
 void Surface::draw()
 {
+    for(const std::vector<drawNS::Point3D> & p : PointsSurf)
+    {
+        for(const drawNS::Point3D & o : p)
+        std::cout<<"x: "<<o[0]<<" "<<"y: "<<o[1]<<" "<<"z: "<<o[2]<<" "<<std::endl;
+    }
     GnuPtr->draw_surface(PointsSurf);
     GnuPtr->redraw();
 }

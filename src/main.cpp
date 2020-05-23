@@ -19,7 +19,8 @@ void wait4key() {
 int main()
 {   
     double angle, length,tab[3]={15,0,0};
-    std::ifstream plik,PlikBottom,PlikWater;
+    double dVec3[3], TabSurf[3]={-100,-100,100};
+    std::ifstream plik;
     MatrixRot Mac;
     Vector3D Vec, Vec2[8],Vec4(tab);
 
@@ -28,7 +29,7 @@ int main()
         plik >> Vec2[i];
     plik.close();
 
-    double dVec3[3], TabSurf[3]={-50,-50,40};
+    
 
     plik.open("plik_rotators.txt", std::fstream::out);
     for(int i=0; i<3; i++)
@@ -40,12 +41,11 @@ int main()
     std::shared_ptr<drawNS::APIGnuPlot3D> g = std::make_shared<drawNS::APIGnuPlot3D>(100,-100,100,-100,100,-100,-1);
     std::shared_ptr<Rotator> Rotator1 = std::make_shared<Rotator>(dVec3,Vec,Mac,g);
     
-    //Surface SurfBot(g,Surftab);
-    //SurfBot.draw();
+    Surface SurfBot(g,Surftab);
     Drone Drone1 (Rotator1,Vec2, Vec, Mac, g);
     
-    wait4key();
     Drone1.draw();
+    SurfBot.draw();
     char znak;
     do{
       cout<<endl;

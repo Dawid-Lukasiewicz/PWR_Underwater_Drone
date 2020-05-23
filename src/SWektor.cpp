@@ -164,16 +164,22 @@ bool SWektor<T,SIZE>::operator !=(const SWektor & W2)const
 }
 
 template<class T, int SIZE>
-double dlugosc(SWektor<T,SIZE> & W2)
+double SWektor<T,SIZE>::dlugosc() const
 {
-    double suma=0;
-    for (int i=0; i<ROZMIAR; i++)
-    {
-        suma += pow(W2[i],2);
-    }
-    return sqrt(suma);
+  double suma=0;
+  for(int i=0; i<SIZE; i++)
+  {
+    suma+=pow(dane[i],2);
+  }
+  return sqrt(suma);
 }
 
+template<class T, int SIZE>
+const drawNS::Point3D SWektor<T,SIZE>::P3D()const
+{
+    drawNS::Point3D point(dane[0],dane[1],dane[2]);
+    return point;
+}
 
 template<class T, int SIZE>
 std::istream& operator >> (std::istream &Strm, SWektor<T, SIZE> &Wek)
