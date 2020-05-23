@@ -58,7 +58,8 @@ int main()
       cout<<"f - W dół"<<endl;
       cout<<"q - Wyjście"<<endl;
       cout<<"z - Obrót"<<endl;
-      //cin.ignore(1000,'/n');
+      cout<<"h - Teleportacja"<<endl;
+
       cin>>znak;
       switch (znak)
       {
@@ -111,6 +112,12 @@ int main()
         cout<<"Obrót: ";
         cin>>angle;
         Drone1.Drone::rotate(angle);
+        break;
+
+      case 'h':
+        cout<<"Teleportacja na koordynaty: ";
+        cin>>Vec;
+        Drone1.Drone::move_to(Vec);
         break;
 
       case 'q':

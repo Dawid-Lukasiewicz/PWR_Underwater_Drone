@@ -16,8 +16,8 @@ class Drone : public Rectangle
     void move(double length)override;
     void moveUpDown(double length, double angle)override;
     void rotate(double angle)override;
-    void move_to(const Vector3D & vec);
-    void move_to(double x,double y,double z);
+    void move_to(const Vector3D & vec)override;
+    void move_to(double x,double y,double z)override;
     void draw()override;
 };
 

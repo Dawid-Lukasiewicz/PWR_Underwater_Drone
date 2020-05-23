@@ -8,26 +8,76 @@
 #define FIGURE
 
 using Vector3D = SWektor<double,3>;
-//using Matrix3D = SMacierz<double,3>;
 
+/*!
+* \brief Wirtualna klasa Figura
+*/
 class Figure
 {
+    
     protected:
+    /*!
+    * \brief Macierz rotacji figury
+    */
     MatrixRot Rotation;
+    /*!
+    * \brief Środek figury
+    */
     Vector3D Center;
+    /*!
+    * \brief Share pointer na klasę drawNS::Draw3DAPI
+    */
     std::shared_ptr<drawNS::Draw3DAPI> GnuPtr;
+    /*!
+    * \brief Identyfikator narysowanej figury
+    */
     double Id;
 
     public:
+    /*!
+    * \brief Konstruktor
+    * \param rot Macierz rotacji
+    * \param center Środek figury
+    * \param gnuptr wskaźnik na drawnNS::Point3D 
+    */
     Figure(const MatrixRot &rot, const Vector3D &center, std::shared_ptr<drawNS::Draw3DAPI> gnuptr)
     : Rotation(rot), Center(center), GnuPtr(gnuptr) , Id(0){}
+    /*!
+    * \brief Destruktor
+    */
     virtual ~Figure() {}
+    /*!
+    * \brief Rysowanie figury
+    */
     virtual void draw() {}
-    virtual void move(double length/*, double angle*/) {}
-    //virtual void move_to(const Vector3D & vec) {}
-    //virtual void move_to(double x,double y,double z) {}
+    /*!
+    * \brief przesunięcie figury po prostej
+    * \param length Długość przesunięcia
+    */
+    virtual void move(double length) {}
+    /*!
+    * \brief Natychmiastowe narysowanie figury w podanym miejscu
+    * \param vec Wektor nowcyh współrzędnych
+    */
+    virtual void move_to(const Vector3D & vec) {}
+    /*!
+    * \brief Natychmiastowe narysowanie figury w podanym miejscu
+    * \param x Koordynaty X
+    * \param y Koordynaty Y
+    * \param z Koordynaty Z
+    */
+    virtual void move_to(double x,double y,double z) {}
+    /*!
+    * \brief przesunięcie figury pod kątem
+    * \param length Długość przesunięcia
+    * \param angle Kąt przesunięcia
+    */
     virtual void moveUpDown(double length, double angle) {}
-    virtual void moveZ(double length, double angle) {}
+    //virtual void moveZ(double length, double angle) {}
+    /*!
+    * \brief Obrót figury wokół jego własnej osi Z
+    * \param angle Kąt obrotu
+    */
     virtual void rotate(double angle) {}
 };
 

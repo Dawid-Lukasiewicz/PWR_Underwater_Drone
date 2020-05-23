@@ -21,6 +21,20 @@ void Rectangle::move(double length)
     Center+=Rotation*move;    
 }
 
+void Rectangle::move_to(const Vector3D & vec)
+{
+    Center = vec;
+    draw();
+}
+
+void Rectangle::move_to(double x,double y,double z)
+{
+    Center[0]=x;
+    Center[1]=y;
+    Center[2]=z;
+    draw();
+}
+
 void Rectangle::moveUpDown(double length, double angle)
 {
     double dane[3]={length,0,0}, pi=3.14, rad=pi*angle/180;

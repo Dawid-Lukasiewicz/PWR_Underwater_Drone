@@ -15,6 +15,8 @@ class Rectangle : public Figure
     ~Rectangle();
     void draw() override;
     void move(double length) override;
+    void move_to(const Vector3D & vec)override;
+    void move_to(double x,double y,double z)override;
     void moveUpDown(double length, double angle) override;
     void rotate(double angle) override;
     MatrixRot const GetRotation() const;

@@ -67,6 +67,18 @@ void Drone::move(double length)
     }
 }
 
+void Drone::move_to(const Vector3D & vec)
+{
+    GnuPtr->erase_shape(Head);
+    Rectangle::move_to(vec);
+}
+
+void Drone::move_to(double x,double y,double z)
+{
+    GnuPtr->erase_shape(Head);
+    Rectangle::move_to(x,y, z);
+}
+
 void Drone::moveUpDown(double length, double angle)
 {
     double length1=length/100;
@@ -80,18 +92,3 @@ void Drone::moveUpDown(double length, double angle)
     
 }
 
-void Drone::move_to(const Vector3D & vec)
-{
-    Center = vec;
-    GnuPtr->erase_shape(Head);
-    draw();
-}
-
-void Drone::move_to(double x,double y,double z)
-{
-    Center[0]=x;
-    Center[1]=y;
-    Center[2]=z;
-    GnuPtr->erase_shape(Head);
-    draw();
-}
