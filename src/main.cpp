@@ -23,6 +23,7 @@ int main()
     std::ifstream plik;
     MatrixRot Mac;
     Vector3D Vec, Vec2[8],Vec4(tab);
+    string BotColor="black", WaterColor="blue";
 
     plik.open("plik_body.txt", std::fstream::out);
     for(int i=0; i<8; i++)
@@ -42,10 +43,13 @@ int main()
     std::shared_ptr<Rotator> Rotator1 = std::make_shared<Rotator>(dVec3,Vec,Mac,g);
     
     Surface SurfBot(g,Surftab);
+    Surftab[2]=-100;
+    Surface SurfWater(g,Surftab);
     Drone Drone1 (Rotator1,Vec2, Vec, Mac, g);
     
     Drone1.draw();
-    SurfBot.draw();
+    SurfBot.draw(BotColor);
+    SurfWater.draw(WaterColor);
     char znak;
     do{
       cout<<endl;

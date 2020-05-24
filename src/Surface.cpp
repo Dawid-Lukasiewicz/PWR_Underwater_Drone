@@ -18,14 +18,9 @@ Surface::~Surface()
 {
 }
 
-void Surface::draw()
+void Surface::draw(string & color)
 {
-    for(const std::vector<drawNS::Point3D> & p : PointsSurf)
-    {
-        for(const drawNS::Point3D & o : p)
-        std::cout<<"x: "<<o[0]<<" "<<"y: "<<o[1]<<" "<<"z: "<<o[2]<<" "<<std::endl;
-    }
-    GnuPtr->draw_surface(PointsSurf);
+    GnuPtr->draw_surface(PointsSurf,color);
     GnuPtr->redraw();
 }
     /*
