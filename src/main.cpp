@@ -30,8 +30,6 @@ int main()
         plik >> Vec2[i];
     plik.close();
 
-    
-
     plik.open("plik_rotators.txt", std::fstream::out);
     for(int i=0; i<3; i++)
         plik >> dVec3[i];
