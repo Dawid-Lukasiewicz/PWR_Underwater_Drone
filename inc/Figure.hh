@@ -1,11 +1,14 @@
+#ifndef FIGURE
+#define FIGURE
+
 #include<iostream>
+#include <string>
 #include <unistd.h>
 #include"MatrixRot.hh"
 #include"Dr3D_gnuplot_api.hh"
 #include"Draw3D_api_interface.hh"
 
-#ifndef FIGURE
-#define FIGURE
+
 
 using Vector3D = SWektor<double,3>;
 
@@ -16,6 +19,8 @@ class Figure
 {
     
     protected:
+    
+    std::string Color;
     /*!
     * \brief Macierz rotacji figury
     */
@@ -40,8 +45,8 @@ class Figure
     * \param center Środek figury
     * \param gnuptr wskaźnik na drawnNS::Point3D 
     */
-    Figure(const MatrixRot &rot, const Vector3D &center, std::shared_ptr<drawNS::Draw3DAPI> gnuptr)
-    : Rotation(rot), Center(center), GnuPtr(gnuptr) , Id(0){}
+    Figure(const MatrixRot &rot, const Vector3D &center, std::shared_ptr<drawNS::Draw3DAPI> gnuptr,const std::string & color)
+    : Rotation(rot), Center(center), GnuPtr(gnuptr), Color(color) , Id(0){}
     /*!
     * \brief Destruktor
     */
@@ -79,6 +84,10 @@ class Figure
     * \param angle Kąt obrotu
     */
     virtual void rotate(double angle) {}
+    /*!
+    * \brief Zwraca środek figury
+    */
+    virtual Vector3D & GetCenter() =0;
 };
 
 #endif

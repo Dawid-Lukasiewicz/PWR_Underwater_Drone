@@ -9,10 +9,13 @@ class Surface :public Obstacle
 {
 private:
     vector<vector<drawNS::Point3D>> PointsSurf;
+    shared_ptr<drawNS::Draw3DAPI> GnuPtr;
+    std::string Color;
 public:
-    Surface(shared_ptr<drawNS::Draw3DAPI> gnuptr, Vector3D pointZ);
+    Surface(shared_ptr<drawNS::Draw3DAPI> gnuptr, Vector3D pointZ,std::string color);
     ~Surface();
-    void draw(string & color);
+    void draw();
+    bool collision(const InterfaceDrone & MovingDrone);
 };
 
 #endif

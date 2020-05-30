@@ -1,8 +1,8 @@
 #include"Rectangle.hh"
-//#include
 
-Rectangle::Rectangle(const Vector3D *nodes, const Vector3D &center, const MatrixRot &rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr)
-: Figure(rotation, center, gnuptr)
+
+Rectangle::Rectangle(const Vector3D *nodes, const Vector3D &center, const MatrixRot &rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr,const std::string & color)
+: Figure(rotation, center, gnuptr, color)
 {
     
     for(int i=0; i<8; i++)
@@ -67,6 +67,11 @@ void Rectangle::draw()
     }
     GnuPtr->erase_shape(Id);
     Id=GnuPtr->draw_polyhedron(vector<vector<drawNS::Point3D>>{{P[0].P3D(),P[1].P3D(),
-    P[2].P3D(),P[3].P3D()},{P[4].P3D(),P[5].P3D(),P[6].P3D(),P[7].P3D()}},"green");
-    GnuPtr->redraw();
+    P[2].P3D(),P[3].P3D()},{P[4].P3D(),P[5].P3D(),P[6].P3D(),P[7].P3D()}},Color);
+    //GnuPtr->redraw();
+}
+
+Vector3D & Rectangle::GetCenter()
+{
+    return Center;
 }

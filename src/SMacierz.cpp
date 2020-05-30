@@ -115,7 +115,7 @@ SMacierz<T, SIZE> SMacierz<T, SIZE>::operator *(const SMacierz<T, SIZE> & M)cons
     }
     else
     {
-        std::cerr << "Niezgodne wymiary macierzy" << std::endl;
+        std::cerr << "Niezgodne wymiary macierzy Tutaj" << std::endl;
         exit(1);
     }
 }

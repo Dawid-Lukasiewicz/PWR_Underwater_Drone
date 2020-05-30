@@ -1,5 +1,6 @@
 #include"Figure.hh"
 
+
 #ifndef RECTANGLE
 #define RECTANGLE
 
@@ -11,7 +12,6 @@ class Rectangle : public Figure
     */
     Vector3D Nodes[8];
     
-
     public:
     /*!
     * \brief Usunięty bezparametryczny konstruktor
@@ -24,7 +24,7 @@ class Rectangle : public Figure
     * \param rotation Rotacja figury
     * \param gnuptr Wkaźnik do łącza do gnuplota
     */
-    Rectangle(const Vector3D *nodes, const Vector3D &center, const MatrixRot &rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr);
+    Rectangle(const Vector3D *nodes, const Vector3D &center, const MatrixRot &rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr,const std::string & color);
     /*!
     * \brief Destruktor
     */
@@ -65,6 +65,10 @@ class Rectangle : public Figure
     * \brief Zwrócenie macierzy rotacji figury
     */
     MatrixRot const GetRotation() const;
+    /*!
+    * \brief Zwrócenie środka figury
+    */
+    Vector3D & GetCenter()override;
 };
 
 #endif

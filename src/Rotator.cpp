@@ -1,7 +1,7 @@
 #include "Rotator.hh"
 
-Rotator::Rotator(const Vector3D node, const Vector3D & center, const MatrixRot & rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr)
-: SixPrism(node,center,rotation,gnuptr)
+Rotator::Rotator(const Vector3D node, const Vector3D & center, const MatrixRot & rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr,const std::string & color)
+: SixPrism(node,center,rotation,gnuptr, color)
 {
 
     double tab[3][3]={{0,0,1},{0,1,0},{-1,0,0}};
@@ -25,6 +25,7 @@ void Rotator::draw(const MatrixRot &MatRot, const Vector3D & attach)
     using namespace std;
     
     Vector3D P[12];
+    //std::cout<<"MatRot"<<MatRot<<std::endl;
     propulsion();
     for (int i=0; i<6; i++)
     {
@@ -35,7 +36,7 @@ void Rotator::draw(const MatrixRot &MatRot, const Vector3D & attach)
     Id=GnuPtr->draw_polyhedron(vector<vector<drawNS::Point3D>>
     {{P[0].P3D(),P[1].P3D(),P[2].P3D(),P[3].P3D(),P[4].P3D(),P[5].P3D()},
     {P[6].P3D(),P[7].P3D(),P[8].P3D(),P[9].P3D(),P[10].P3D(),P[11].P3D()}},
-    "blue");
+    Color);
     
 }
 

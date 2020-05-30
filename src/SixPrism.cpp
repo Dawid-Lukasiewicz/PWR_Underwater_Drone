@@ -1,7 +1,7 @@
 #include "SixPrism.hh"
 
-SixPrism::SixPrism(const Vector3D node, const Vector3D & center, const MatrixRot & rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr)
-: Figure(rotation, center, gnuptr)
+SixPrism::SixPrism(const Vector3D node, const Vector3D & center, const MatrixRot & rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr,const std::string & color)
+: Figure(rotation, center, gnuptr, color)
 {
     MatrixRot PomRot(60.0), PomRot2=Rotation;
     for (int i=0; i<6; i++)
@@ -32,7 +32,7 @@ void SixPrism::draw()
     Id=GnuPtr->draw_polyhedron(vector<vector<drawNS::Point3D>>
     {{P[0].P3D(),P[1].P3D(),P[2].P3D(),P[3].P3D(),P[4].P3D(),P[5].P3D()},
     {P[6].P3D(),P[7].P3D(),P[8].P3D(),P[9].P3D(),P[10].P3D(),P[11].P3D()}},
-    "blue");
+    Color);
     GnuPtr->redraw();
 }
 
@@ -42,9 +42,6 @@ void SixPrism::move(double length)
     Vector3D move(dane);
 
     Center+=Rotation*move;    
-    //GnuPtr->erase_shape(Id);
-    //draw();
-
 }
 
 void SixPrism::moveUpDown(double length, double angle)
