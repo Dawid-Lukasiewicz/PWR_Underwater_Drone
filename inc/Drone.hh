@@ -25,6 +25,7 @@ class Drone : public Rectangle, public Obstacle, public InterfaceDrone
     void draw()override;
     Vector3D GetCenter()const override;
     double GetRay()const override;
+    Vector3D GetNodes(int indeks)const override;
     bool collision(const InterfaceDrone & MovingDrone)override;
 };
 

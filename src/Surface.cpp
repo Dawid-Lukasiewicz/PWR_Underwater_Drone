@@ -3,10 +3,10 @@ Surface::Surface(std::shared_ptr<drawNS::Draw3DAPI> gnuptr, Vector3D pointZ,std:
 : GnuPtr(gnuptr),Color(color)
 {
     std::vector<drawNS::Point3D> tmpV;
-    for(int i=0; i<6; i++)
+    for(int i=0; i<9; i++)
     {
         tmpV.clear();
-        for(int j=0; j<6; j++)
+        for(int j=0; j<9; j++)
         {
             tmpV.push_back(drawNS::Point3D(40*i+pointZ[0], 40.0*j+pointZ[1], pointZ[2]));
         }

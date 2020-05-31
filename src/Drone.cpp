@@ -12,8 +12,8 @@ Drone::Drone(std::shared_ptr<Rotator> rotator1, const Vector3D *nodes, const Vec
     Vector3D Pom1=Nodes[0],Pom2=Nodes[3];
     Pom1[1]=Nodes[0][1]/1.5;
     Pom2[1]=Nodes[3][1]/1.5;
-    Pom1[2]=Center[2];
-    Pom2[2]=Center[2];
+    Pom1[2]=0;
+    Pom2[2]=0;
     RotatorPtr[0]->GetCenter()=Pom1;
     RotatorPtr[1]->GetCenter()=Pom2;
     //Obliczenie promienia
@@ -89,6 +89,18 @@ Vector3D Drone::GetCenter()const
 double Drone::GetRay()const
 {
     return Ray;
+}
+
+Vector3D Drone::GetNodes(int indeks)const
+{
+    //std::cout<<"indeks: "<<indeks<<std::endl;
+    if(indeks>=0&&indeks<8)
+        return Nodes[indeks];
+    else
+    {
+        std::cout<<"Wykroczono za indeks (Drone::GetNodes(int indeks))"<<std::endl;
+        exit(0);
+    }
 }
 
 bool Drone::collision(const InterfaceDrone & MovingDrone)

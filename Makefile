@@ -8,7 +8,7 @@ __start__: dron
 
 dron: obj/main.o obj/LZespolona.o obj/SWektor.o obj/MatrixRot.o obj/Rectangle.o obj/SixPrism.o obj/Rotator.o\
 									obj/Drone.o obj/Surface.o obj/Box.o obj/Scene.o obj/Dr3D_gnuplot_api.o obj/Templates.o
-	g++ -o dron obj/main.o obj/LZespolona.o obj/SWektor.o obj/MatrixRot.o obj/Rectangle.o obj/SixPrism.o obj/Rotator.o\
+	g++ -g -o dron obj/main.o obj/LZespolona.o obj/SWektor.o obj/MatrixRot.o obj/Rectangle.o obj/SixPrism.o obj/Rotator.o\
                                    	obj/Drone.o obj/Surface.o obj/Box.o obj/Scene.o obj/Dr3D_gnuplot_api.o obj/Templates.o -lpthread
 
 obj/main.o: src/main.cpp inc/MatrixRot.hh inc/SWektor.hh
