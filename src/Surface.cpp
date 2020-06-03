@@ -26,9 +26,6 @@ void Surface::draw()
 
 bool Surface::collision(const InterfaceDrone & MovingDrone)
 {
-    //std::cout<<"Center: "<<MovingDrone.GetCenter()<<std::endl;std::cout<<++kata<<std::endl;
-    //std::cout<<"Pojemność0: "<<PointsSurf.size()<<std::endl;
-    double ada=0,kata=0;
     bool Stop=false;
     for(vector<drawNS::Point3D> & i : PointsSurf)
     {   

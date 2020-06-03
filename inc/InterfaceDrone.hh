@@ -2,6 +2,7 @@
 #define INTERFACE_DRONE
 
 #include"Figure.hh"
+#include "Obstacle.hh"
 
 class InterfaceDrone
 {

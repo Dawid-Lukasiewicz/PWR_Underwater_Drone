@@ -6,7 +6,7 @@
 #include"Obstacle.hh"
 #include"InterfaceDrone.hh"
 
-class Drone : public Rectangle, public Obstacle, public InterfaceDrone
+class Drone : public Rectangle, public InterfaceDrone, public Obstacle
 {
     double Head;
     double Ray;
