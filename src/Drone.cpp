@@ -105,7 +105,6 @@ Vector3D Drone::GetNodes(int indeks)const
 
 bool Drone::collision(const InterfaceDrone & MovingDrone)
 {
-    //std::cout<<"Center: "<<Center<<std::endl;  Center.dlugosc()+Ray<MovingDrone.GetCenter().dlugosc()+MovingDrone.GetRay()
     if((Center-MovingDrone.GetCenter()).dlugosc()<Ray+MovingDrone.GetRay())
     {
         std::cout<<std::endl;

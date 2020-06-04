@@ -13,6 +13,7 @@ public:
     Obstacle(){}
     virtual ~Obstacle() {}
     virtual bool collision(const InterfaceDrone & MovingDrone)=0;
+    virtual void draw() {}
 };
 
 #endif

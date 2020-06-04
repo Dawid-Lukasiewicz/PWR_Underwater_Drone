@@ -36,15 +36,10 @@ bool Box::collision(const InterfaceDrone & MovingDrone)
         }
     }
     return Stop;
-    /*
-    if((Center-MovingDrone.GetCenter()).dlugosc()<Ray+MovingDrone.GetRay())
-    {
-        std::cout<<std::endl;
-        std::cout<<"Kolizja z przeszkodą"<<std::endl;
-        std::cout<<std::endl;
-        return true;
-    }
-    else
-        return false;
-    */
+}
+
+void Box::draw()
+{
+    Rectangle::draw();
+    GnuPtr->redraw();
 }

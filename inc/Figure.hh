@@ -20,7 +20,6 @@ class Figure
     
     protected:
     
-    std::string Color;
     /*!
     * \brief Macierz rotacji figury
     */
@@ -37,6 +36,7 @@ class Figure
     * \brief Identyfikator narysowanej figury
     */
     double Id;
+    std::string Color;
 
     public:
     /*!

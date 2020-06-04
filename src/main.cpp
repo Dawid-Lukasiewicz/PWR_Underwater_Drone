@@ -69,13 +69,13 @@ int main()
     plik.close();
     vector<shared_ptr<Obstacle>>BoxesVector
     {
-      make_shared<Obstacle>(BoxNodes,BoxCenter1,MacObrotu,g,"yellow"),
-      make_shared<Obstacle>(BoxNodes,BoxCenter2,MacObrotu,g,"yellow"),
-      make_shared<Obstacle>(g,Surftab1,"black"),
-      make_shared<Obstacle>(g,Surftab2,"blue"),
-      make_shared<Obstacle>(Rotator1,VecNodes,CenterVec1,MacObrotu,g,"green"),
-      make_shared<Obstacle>(Rotator2,VecNodes,CenterVec2,MacObrotu,g,"red"),
-      make_shared<Obstacle>(Rotator3,VecNodes,CenterVec3,MacObrotu,g,"purple")
+      shared_ptr<Obstacle>(new Box(BoxNodes,BoxCenter1,MacObrotu,g,"yellow")),
+      shared_ptr<Obstacle>(new Box(BoxNodes,BoxCenter2,MacObrotu,g,"yellow")),
+      shared_ptr<Obstacle>(new Surface(g,Surftab1,"black")),
+      shared_ptr<Obstacle>(new Surface(g,Surftab2,"blue")),
+      shared_ptr<Obstacle>(new Drone(Rotator1,VecNodes,CenterVec1,MacObrotu,g,"green")),
+      shared_ptr<Obstacle>(new Drone(Rotator2,VecNodes,CenterVec2,MacObrotu,g,"red")),
+      shared_ptr<Obstacle>(new Drone(Rotator3,VecNodes,CenterVec3,MacObrotu,g,"purple"))
     };
     plik.open("Boxes2_body.txt", std::fstream::out);
     for(int i=0; i<8; i++)

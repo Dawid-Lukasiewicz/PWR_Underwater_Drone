@@ -13,6 +13,7 @@ void Scene::MoveDrone(double length, double angle, int X)
     {
         drones[X]->moveUpDown(length1, angle);
         usleep(25000);
+        /*
         for(shared_ptr<Drone> &tmp : drones)
         {
             if(tmp!=drones[X])
@@ -24,12 +25,16 @@ void Scene::MoveDrone(double length, double angle, int X)
                     }
             }
         }
+        */
         for(shared_ptr<Obstacle> &tmp : boxes)
         {
-            if(tmp->collision(*drones[X]))
+            if(tmp!=drones[X])
             {
-                Stop=true;
-                break;
+                if(tmp->collision(*drones[X]))
+                {
+                    Stop=true;
+                    break;
+                }
             }
         }
         /*
@@ -55,6 +60,7 @@ void Scene::RotateDrone(double angle, int X)
     {
         drones[X]->rotate(angle1);
         usleep(25000);
+        /*
         for(shared_ptr<Drone> &tmp : drones)
         {
             if(tmp!=drones[X])
@@ -66,12 +72,16 @@ void Scene::RotateDrone(double angle, int X)
                     }
             }
         }
+        */
         for(shared_ptr<Obstacle> &tmp : boxes)
             {
-                if(tmp->collision(*drones[X]))
+                if(tmp!=drones[X])
                 {
-                    Stop=true;
-                    break;
+                    if(tmp->collision(*drones[X]))
+                    {
+                        Stop=true;
+                        break;
+                    }
                 }
             }
             /*
@@ -90,10 +100,19 @@ void Scene::RotateDrone(double angle, int X)
 }
 void Scene::Draw()
 {
-    //for(shared_ptr<Drone> &tmp : drones)
-    //    tmp->draw();
     for(shared_ptr<Obstacle> &tmp : boxes)
+    {
         tmp->draw();
-    //for(shared_ptr<Surface> &tmp : surface)
-    //    tmp->draw();
+    }
+        
 }
+/*
+{
+if(dynamic_pointer_cast<Drone>(tmp)==Drone)
+    dynamic_pointer_cast<Drone>(tmp)->draw();
+else if(dynamic_pointer_cast<Box>(tmp)==Box)
+    dynamic_pointer_cast<Box>(tmp)->draw();
+else if(dynamic_pointer_cast<Surface>(tmp)==Surface)
+    dynamic_pointer_cast<Surface>(tmp)->draw();
+}
+*/
