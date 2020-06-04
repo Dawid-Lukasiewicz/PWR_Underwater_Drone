@@ -7,46 +7,24 @@ Scene::~Scene()
 
 void Scene::MoveDrone(double length, double angle, int X)
 {
-    double length1=length/100;
+    double length1=length/Speed;
     bool Stop=false;
-    for (int i=0; i<100; i++)
+    for (int i=0; i<Speed; i++)
     {
         drones[X]->moveUpDown(length1, angle);
         usleep(25000);
-        /*
-        for(shared_ptr<Drone> &tmp : drones)
-        {
-            if(tmp!=drones[X])
-            {
-                if(tmp->collision(*drones[X]))
-                    {
-                        Stop=true;
-                        break;
-                    }
-            }
-        }
-        */
-        for(shared_ptr<Obstacle> &tmp : boxes)
+        for(shared_ptr<Obstacle> &tmp : obstacles)
         {
             if(tmp!=drones[X])
             {
                 if(tmp->collision(*drones[X]))
                 {
+                    drones[X]->moveUpDown(-length1, angle);
                     Stop=true;
                     break;
                 }
             }
         }
-        /*
-        for(shared_ptr<Surface> &tmp : surface)
-        {
-            if(tmp->collision(*drones[X]))
-            {
-                Stop=true;
-                break;
-            }
-        }
-        */
         if(Stop==true)
             break;
     }
@@ -54,65 +32,38 @@ void Scene::MoveDrone(double length, double angle, int X)
 
 void Scene::RotateDrone(double angle, int X)
 {
-    double angle1=angle/100;
+    double angle1=angle/Speed;
     bool Stop=false;
-    for (int i=0; i<100; i++)
+    for (int i=0; i<Speed; i++)
     {
         drones[X]->rotate(angle1);
         usleep(25000);
-        /*
-        for(shared_ptr<Drone> &tmp : drones)
-        {
-            if(tmp!=drones[X])
-            {
-                if(tmp->collision(*drones[X]))
-                    {
-                        Stop=true;
-                        break;
-                    }
-            }
-        }
-        */
-        for(shared_ptr<Obstacle> &tmp : boxes)
+        for(shared_ptr<Obstacle> &tmp : obstacles)
             {
                 if(tmp!=drones[X])
                 {
                     if(tmp->collision(*drones[X]))
                     {
+                        drones[X]->rotate(-angle1);
                         Stop=true;
                         break;
                     }
                 }
             }
-            /*
-        for(shared_ptr<Surface> &tmp : surface)
-        {
-            if(tmp->collision(*drones[X]))
-            {
-                Stop=true;
-                break;
-            }
-        }
-        */
         if(Stop==true)
             break;
     }
 }
 void Scene::Draw()
 {
-    for(shared_ptr<Obstacle> &tmp : boxes)
+    for(shared_ptr<Obstacle> &tmp : obstacles)
     {
         tmp->draw();
-    }
-        
+    }       
 }
-/*
+
+void Scene::ChangeSpeed(int speed)
 {
-if(dynamic_pointer_cast<Drone>(tmp)==Drone)
-    dynamic_pointer_cast<Drone>(tmp)->draw();
-else if(dynamic_pointer_cast<Box>(tmp)==Box)
-    dynamic_pointer_cast<Box>(tmp)->draw();
-else if(dynamic_pointer_cast<Surface>(tmp)==Surface)
-    dynamic_pointer_cast<Surface>(tmp)->draw();
+    std::cout<<"Podaj prędkość: ";
+    Speed=speed;
 }
-*/

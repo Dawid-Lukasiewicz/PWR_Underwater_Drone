@@ -4,6 +4,10 @@
 #ifndef RECTANGLE
 #define RECTANGLE
 
+
+/*!
+* \brief Klasa Rectangle, przedstawiająca prostopadłościan
+*/
 class Rectangle : public Figure
 {
     protected:
@@ -23,6 +27,7 @@ class Rectangle : public Figure
     * \param center Środek figury
     * \param rotation Rotacja figury
     * \param gnuptr Wkaźnik do łącza do gnuplota
+    * \param color Kolor figury
     */
     Rectangle(const Vector3D *nodes, const Vector3D &center, const MatrixRot &rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr,const std::string & color);
     /*!

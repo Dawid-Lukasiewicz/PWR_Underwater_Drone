@@ -21,7 +21,7 @@ void wait4key() {
 int main()
 {   
     double angle, length;
-    
+    int speed;
     std::shared_ptr<drawNS::APIGnuPlot3D> g = std::make_shared<drawNS::APIGnuPlot3D>(150,-150,150,-150,150,-150,-1);
 
     /*Inicjalizacja wriników*/
@@ -69,13 +69,14 @@ int main()
     plik.close();
     vector<shared_ptr<Obstacle>>BoxesVector
     {
+      shared_ptr<Obstacle>(new Drone(Rotator1,VecNodes,CenterVec1,MacObrotu,g,"green")),
+      shared_ptr<Obstacle>(new Drone(Rotator2,VecNodes,CenterVec2,MacObrotu,g,"red")),
+      shared_ptr<Obstacle>(new Drone(Rotator3,VecNodes,CenterVec3,MacObrotu,g,"purple")),
       shared_ptr<Obstacle>(new Box(BoxNodes,BoxCenter1,MacObrotu,g,"yellow")),
       shared_ptr<Obstacle>(new Box(BoxNodes,BoxCenter2,MacObrotu,g,"yellow")),
       shared_ptr<Obstacle>(new Surface(g,Surftab1,"black")),
-      shared_ptr<Obstacle>(new Surface(g,Surftab2,"blue")),
-      shared_ptr<Obstacle>(new Drone(Rotator1,VecNodes,CenterVec1,MacObrotu,g,"green")),
-      shared_ptr<Obstacle>(new Drone(Rotator2,VecNodes,CenterVec2,MacObrotu,g,"red")),
-      shared_ptr<Obstacle>(new Drone(Rotator3,VecNodes,CenterVec3,MacObrotu,g,"purple"))
+      shared_ptr<Obstacle>(new Surface(g,Surftab2,"blue"))
+      
     };
     plik.open("Boxes2_body.txt", std::fstream::out);
     for(int i=0; i<8; i++)
@@ -85,32 +86,37 @@ int main()
     BoxesVector.push_back(make_shared<Box>(BoxNodes,BoxCenter2,MacObrotu,g,"yellow"));
     /*Inicjalizacja Drona*/
     vector<shared_ptr<Drone>>DroneVector;
-    DroneVector.push_back(dynamic_pointer_cast<Drone>(BoxesVector[4]));
-    DroneVector.push_back(dynamic_pointer_cast<Drone>(BoxesVector[5]));
-    DroneVector.push_back(dynamic_pointer_cast<Drone>(BoxesVector[6]));
-    /*{
-      make_shared<InterfaceDrone>(Rotator1,VecNodes,CenterVec1,MacObrotu,g,"green"),
-      make_shared<InterfaceDrone>(Rotator2,VecNodes,CenterVec2,MacObrotu,g,"red"),
-      make_shared<InterfaceDrone>(Rotator3,VecNodes,CenterVec3,MacObrotu,g,"purple")
-    };*/
+    DroneVector.push_back(dynamic_pointer_cast<Drone>(BoxesVector[0]));
+    DroneVector.push_back(dynamic_pointer_cast<Drone>(BoxesVector[1]));
+    DroneVector.push_back(dynamic_pointer_cast<Drone>(BoxesVector[2]));
     
     /*Konieci inicjalizacji*/
     Scene MainScene(DroneVector,BoxesVector);
     MainScene.Draw();
     char znak;
     int X;
+    bool GitGut;
     cout<<"Wybierz drona"<<endl;
     cout<<"0 - zielony"<<endl;
     cout<<"1 - czerwony"<<endl;
     cout<<"2 - fioletowy"<<endl;
     do
     {
-      cin.clear();
       cin>>X;
-      if(X!=0&&X!=1&&X!=2)
+      if((X!=0&&X!=1&&X!=2)||cin.fail()==1)
+      {
+        GitGut=true;
+        cin.clear();
+        cin.ignore(1000,'\n');
         cout<<"Zły numer drona"<<endl;
+      }
+      else
+      {
+        GitGut=false;
+      }
+      
     }
-      while(X!=0&&X!=1&&X!=2);
+      while(GitGut);
     do{
       /*
       cout<<"r - Do góry"<<endl;
@@ -122,6 +128,7 @@ int main()
       cout<<"w,a,s,d - Obrót i do przodu"<<endl;
       cout<<"p - Zmiana drona"<<endl;
       cout<<"q - Wyjście"<<endl;
+      cout<<"t - Zmiana prędkości"<<endl;
 
       cin>>znak;
       switch (znak)
@@ -180,10 +187,24 @@ int main()
         do
         {
           cin>>X;
-          if(X!=0&&X!=1&&X!=2)
+          if((X!=0&&X!=1&&X!=2)||cin.fail()==1)
+          {
+            GitGut=true;
+            cin.clear();
+            cin.ignore(1000,'\n');
             cout<<"Zły numer drona"<<endl;
-        }
-          while(X!=0&&X!=1&&X!=2);
+          }
+          else
+          {
+            GitGut=false;
+          }
+        }while(GitGut);
+        break;
+
+      case 't':
+        cout<<"Podaj ilość klatek (OPTYMALNA WARTOŚĆ 100): ";
+        cin>>speed;
+        MainScene.ChangeSpeed(speed);
         break;
 
       case 'q':

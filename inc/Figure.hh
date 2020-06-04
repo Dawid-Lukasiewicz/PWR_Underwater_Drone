@@ -36,6 +36,9 @@ class Figure
     * \brief Identyfikator narysowanej figury
     */
     double Id;
+    /*!
+    * \brief Kolor figury
+    */
     std::string Color;
 
     public:
@@ -43,10 +46,11 @@ class Figure
     * \brief Konstruktor
     * \param rot Macierz rotacji
     * \param center Środek figury
-    * \param gnuptr wskaźnik na drawnNS::Point3D 
+    * \param gnuptr Wskaźnik na drawnNS::Point3D 
+    * \param color Kolor figury
     */
     Figure(const MatrixRot &rot, const Vector3D &center, std::shared_ptr<drawNS::Draw3DAPI> gnuptr,const std::string & color)
-    : Rotation(rot), Center(center), GnuPtr(gnuptr), Color(color) , Id(0){}
+    : Rotation(rot),Center(center),GnuPtr(gnuptr),Id(0),Color(color){}
     /*!
     * \brief Destruktor
     */
