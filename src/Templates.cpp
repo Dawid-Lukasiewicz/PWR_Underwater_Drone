@@ -44,6 +44,7 @@ template std::ostream& operator << (std::ostream &Strm, const SMacierz<double, R
 template std::istream& operator >> (std::istream &Strm, SMacierz<Zespolona, ROZMIAR> &Mac);
 template std::ostream& operator << (std::ostream &Strm, const SMacierz<Zespolona, ROZMIAR> &Mac);
 //Wektor
+
 template class SWektor<Zespolona,ROZMIAR>;
 template class SWektor<double,ROZMIAR>;
 template std::istream& operator >> (std::istream &Strm, SWektor<Zespolona,ROZMIAR> &Wek);

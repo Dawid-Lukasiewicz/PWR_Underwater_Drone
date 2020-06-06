@@ -3,14 +3,19 @@
 template<class T, int SIZE>
 SWektor<T, SIZE>::SWektor()
 {
+    ++Ilosc;
+    OgolnaIlosc++;
     for (int i=0; i<Wymiar; i++)
     {
         dane[i] = 0.0;
     }
 }
+
 template<class T, int SIZE>
 SWektor<T, SIZE>::SWektor(T *tab)
 {
+    ++Ilosc;
+    OgolnaIlosc++;
     for (int i=0; i<Wymiar; i++)
     {
         dane[i] = tab[i];
@@ -18,8 +23,31 @@ SWektor<T, SIZE>::SWektor(T *tab)
 }
 
 template<class T, int SIZE>
+SWektor<T,SIZE>::SWektor(const SWektor & nowy)
+{
+    ++Ilosc;
+    OgolnaIlosc++;
+    for (int i=0; i<Wymiar; i++)
+    {
+        dane[i] = nowy.dane[i];
+    }
+}
+/*
+template<class T, int SIZE>
+SWektor<T,SIZE>::SWektor(SWektor && nowy)
+{
+    ++Ilosc;
+    for (int i=0; i<Wymiar; i++)
+    {
+        dane[i] = nowy.dane[i];
+    }
+}
+*/
+template<class T, int SIZE>
 SWektor<T, SIZE>::~SWektor()
-{}
+{
+    --Ilosc;
+}
 
 template<class T, int SIZE>
 T & SWektor<T, SIZE>::operator[] (int indeks)
@@ -48,6 +76,8 @@ const T & SWektor<T, SIZE>::operator[] (int indeks)const
 template<class T, int SIZE>
 SWektor<T, SIZE> SWektor<T, SIZE>::operator =(const T & W2)
 {
+    ++Ilosc;
+    OgolnaIlosc++;
     for (int i=0; i<Wymiar; i++)
     {
         dane[i] = W2;
@@ -179,6 +209,18 @@ const drawNS::Point3D SWektor<T,SIZE>::P3D()const
 {
     drawNS::Point3D point(dane[0],dane[1],dane[2]);
     return point;
+}
+
+template<class T, int SIZE>
+int SWektor<T,SIZE>::AmountVector()
+{
+   return Ilosc;
+}
+
+template<class T, int SIZE>
+int SWektor<T,SIZE>::AllAmountVector()
+{
+    return OgolnaIlosc;
 }
 
 template<class T, int SIZE>

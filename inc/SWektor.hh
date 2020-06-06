@@ -12,6 +12,8 @@
 template<class T, int SIZE>
 class SWektor 
 {
+  static int Ilosc;
+  static int OgolnaIlosc;
   int Wymiar = SIZE;
   T dane[SIZE];
 
@@ -19,6 +21,8 @@ class SWektor
   
   SWektor();                                      //Kontruktor bezparametryczny
   SWektor(T *dane);                               //Kontruktor dwuparametryczny
+  SWektor(const SWektor & nowy);                  //Kontruktor kopiujący
+  //SWektor(SWektor && nowy);                       //Kontruktor przenoszący
   ~SWektor();                                     //Destruktor
   T operator *(const SWektor & W2)const;          //Iloczyn skalarny
   SWektor operator =(const T & W2);               //Przypisanie wartości pod każdą zmienną wektora
@@ -35,23 +39,20 @@ class SWektor
   const T & Pobierz_dane() const;                 //Zwraca adres na tablicę zmiennych przechowywaną przez wektor
   const drawNS::Point3D P3D()const;
   double dlugosc() const;
+  static int AmountVector();
+  static int AllAmountVector();
 };
+
+template<class T, int SIZE>
+int SWektor<T,SIZE>::Ilosc=0;
+
+template<class T, int SIZE>
+int SWektor<T,SIZE>::OgolnaIlosc=0;
+
 template<class T, int SIZE>
 std::istream& operator >> (std::istream &Strm, SWektor<T, SIZE> &Wek);
 
 template<class T, int SIZE>
 std::ostream& operator << (std::ostream &Strm, const SWektor<T, SIZE> &Wek);
 
-/*
-template<>
-double SWektor<Zespolona, ROZMIAR>::dlugosc() const
-{
-  double suma=0;
-  for(int i=0; i<Wymiar; i++)
-  {
-    suma+=pow(dane[i].modul(),2);
-  }
-  return sqrt(suma);
-}
-*/
 #endif 

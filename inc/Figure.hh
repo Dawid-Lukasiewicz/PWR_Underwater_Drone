@@ -20,6 +20,7 @@ class Figure
     
     protected:
     
+    
     /*!
     * \brief Macierz rotacji figury
     */
@@ -50,7 +51,7 @@ class Figure
     * \param color Kolor figury
     */
     Figure(const MatrixRot &rot, const Vector3D &center, std::shared_ptr<drawNS::Draw3DAPI> gnuptr,const std::string & color)
-    : Rotation(rot),Center(center),GnuPtr(gnuptr),Id(0),Color(color){}
+    : Rotation(rot),Center(center),GnuPtr(gnuptr),Id(0),Color(color) {}
     /*!
     * \brief Destruktor
     */
@@ -92,6 +93,8 @@ class Figure
     * \brief Zwraca środek figury
     */
     virtual Vector3D & GetCenter() =0;
+
+   // virtual int AmountFigures()=0;
 };
 
 #endif

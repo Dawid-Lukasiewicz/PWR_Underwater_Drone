@@ -3,6 +3,7 @@
 SixPrism::SixPrism(const Vector3D node, const Vector3D & center, const MatrixRot & rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr,const std::string & color)
 : Figure(rotation, center, gnuptr, color)
 {
+    //HowManyFigures++;
     MatrixRot PomRot(60.0), PomRot2=Rotation;
     for (int i=0; i<6; i++)
     {
@@ -51,19 +52,17 @@ void SixPrism::moveUpDown(double length, double angle)
     Vector3D move(dane);
     SMacierz<double,3> Mat1(daneRot);
     MatrixRot PomRot(Mat1);
-
     Center+=Rotation*(PomRot*move);
-    //GnuPtr->erase_shape(Id);
-    //draw();
-
 }
 
 void SixPrism::rotate(double angle)
 {
     MatrixRot PomRot(angle);    
-    //for (int i=0; i<100; i++)
     Rotation*=PomRot;
-    //GnuPtr->erase_shape(Id);
-    //draw();
-    
 }
+/*
+int SixPrism::AmountFigures()
+{
+    return HowManyFigures;
+}
+*/

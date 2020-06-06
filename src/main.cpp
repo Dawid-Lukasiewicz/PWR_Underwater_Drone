@@ -76,7 +76,6 @@ int main()
       shared_ptr<Obstacle>(new Box(BoxNodes,BoxCenter2,MacObrotu,g,"yellow")),
       shared_ptr<Obstacle>(new Surface(g,Surftab1,"black")),
       shared_ptr<Obstacle>(new Surface(g,Surftab2,"blue"))
-      
     };
     plik.open("Boxes2_body.txt", std::fstream::out);
     for(int i=0; i<8; i++)
@@ -93,6 +92,10 @@ int main()
     /*Konieci inicjalizacji*/
     Scene MainScene(DroneVector,BoxesVector);
     MainScene.Draw();
+    cout<<"***************************"<<endl;
+    cout<<"Ilość: "<<Vector3D::AmountVector()<<endl;
+    cout<<"Całkowita ilość wektorów: "<<Vector3D::AllAmountVector()<<endl;
+    cout<<"***************************"<<endl;
     char znak;
     int X;
     bool GitGut;
@@ -122,13 +125,17 @@ int main()
       cout<<"r - Do góry"<<endl;
       cout<<"f - W dół"<<endl;
       cout<<"h - Teleportacja"<<endl;*/
-      cout<<endl;
+      cout<<"***************************"<<endl;
+      cout<<"Ilość: "<<Vector3D::AmountVector()<<endl;
+      cout<<"Całkowita ilość wektorów: "<<Vector3D::AllAmountVector()<<endl;
+      cout<<"***************************"<<endl;
       cout<<"W - Do przodu pod kątem"<<endl;
       cout<<"z - Obrót"<<endl;
       cout<<"w,a,s,d - Obrót i do przodu"<<endl;
       cout<<"p - Zmiana drona"<<endl;
       cout<<"q - Wyjście"<<endl;
       cout<<"t - Zmiana prędkości"<<endl;
+      cout<<endl;
 
       cin>>znak;
       switch (znak)

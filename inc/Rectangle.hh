@@ -11,6 +11,7 @@
 class Rectangle : public Figure
 {
     protected:
+    //static int HowManyFigures;
     /*!
     * \brief Wierzchołki prostopadłościanu
     */
@@ -74,6 +75,10 @@ class Rectangle : public Figure
     * \brief Zwrócenie środka figury
     */
     Vector3D & GetCenter()override;
+
+    //int AmountFigures()override;
 };
+
+//int Rectangle::HowManyFigures=0;
 
 #endif

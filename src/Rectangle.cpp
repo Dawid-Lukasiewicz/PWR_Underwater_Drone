@@ -68,10 +68,15 @@ void Rectangle::draw()
     GnuPtr->erase_shape(Id);
     Id=GnuPtr->draw_polyhedron(vector<vector<drawNS::Point3D>>{{P[0].P3D(),P[1].P3D(),
     P[2].P3D(),P[3].P3D()},{P[4].P3D(),P[5].P3D(),P[6].P3D(),P[7].P3D()}},Color);
-    //GnuPtr->redraw();
 }
 
 Vector3D & Rectangle::GetCenter()
 {
     return Center;
 }
+/*
+int Rectangle::AmountFigures()
+{
+    return HowManyFigures;
+}
+*/
