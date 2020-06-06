@@ -51,6 +51,24 @@ void Rectangle::rotate(double angle)
     Rotation*=PomRot;
 }
 
+void Rectangle::rotateY(double angle)
+{
+    double pi=3.14, rad=pi*angle/180;
+    double daneRot[3][3]={{cos(rad),0,sin(rad)},{0,1,0},{-sin(rad),0,cos(rad)}};
+    SMacierz<double,3> Mat1(daneRot);
+    MatrixRot PomRot(Mat1);
+    Rotation*=PomRot;
+}
+
+void Rectangle::rotateX(double angle)
+{
+    double pi=3.14, rad=pi*angle/180;
+    double daneRot[3][3]={{1,0,0},{0,cos(rad),-sin(rad)},{0,sin(rad),cos(rad)}};
+    SMacierz<double,3> Mat1(daneRot);
+    MatrixRot PomRot(Mat1);
+    Rotation*=PomRot;
+}
+
 MatrixRot const Rectangle::GetRotation() const
 {
     return Rotation;

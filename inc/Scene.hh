@@ -38,19 +38,20 @@ public:
     * \brief Destruktor
     */
     ~Scene();
+    void MoveDrone(double length, int X);
     /*!
     * \brief Poruszanie wskazanym dronem
     * \param length Długość przesunięcia
     * \param angle Kąt przesunięcia
     * \param X Indeks drona
     */
-    void MoveDrone(double length, double angle, int X);
+    void MoveDroneUpDown(double length, double angle, int X);
     /*!
     * \brief Obrót wskazanym dronem
     * \param angle Kąt obrotu
     * \param X Indeks drona
     */
-    void RotateDrone(double angle, int X);
+    void RotateDrone(double angle, int X, char axis);
     /*!
     * \brief Rysowanie wszystkich obiektów z listy przeszkód
     */

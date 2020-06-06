@@ -59,6 +59,9 @@ class Drone : public Rectangle, public InterfaceDrone, public Obstacle
     * \param angle Kąt obrotu
     */
     void rotate(double angle)override;
+
+    void rotateY(double angle);
+    void rotateX(double angle);
     /*!
     * \brief Natychmiastowe przesunięcie drona na wskazane miejsce
     * \param vec Wektor współrzędnych 

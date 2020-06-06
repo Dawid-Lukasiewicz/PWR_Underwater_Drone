@@ -60,6 +60,25 @@ void SixPrism::rotate(double angle)
     MatrixRot PomRot(angle);    
     Rotation*=PomRot;
 }
+
+void SixPrism::rotateY(double angle)
+{
+    double pi=3.14, rad=pi*angle/180;
+    double daneRot[3][3]={{cos(rad),0,sin(rad)},{0,1,0},{-sin(rad),0,cos(rad)}};
+    SMacierz<double,3> Mat1(daneRot);
+    MatrixRot PomRot(Mat1);
+    Rotation*=PomRot;
+}
+
+void SixPrism::rotateX(double angle)
+{
+    double pi=3.14, rad=pi*angle/180;
+    double daneRot[3][3]={{1,0,0},{0,cos(rad),-sin(rad)},{0,sin(rad),cos(rad)}};
+    SMacierz<double,3> Mat1(daneRot);
+    MatrixRot PomRot(Mat1);
+    Rotation*=PomRot;
+}
+
 /*
 int SixPrism::AmountFigures()
 {

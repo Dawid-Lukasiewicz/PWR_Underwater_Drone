@@ -52,6 +52,22 @@ void Drone::rotate(double angle)
     Drone::draw();
 }
 
+void Drone::rotateY(double angle)
+{
+    Rectangle::rotateY(angle);
+    RotatorPtr[0]->rotateY(angle);
+    RotatorPtr[1]->rotateY(angle);
+    draw();
+}
+
+void Drone::rotateX(double angle)
+{
+    Rectangle::rotateX(angle);
+    RotatorPtr[0]->rotateX(angle);
+    RotatorPtr[1]->rotateX(angle);
+    draw();
+}
+
 void Drone::move(double length)
 {
     double length1=length/100;

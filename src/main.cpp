@@ -130,8 +130,10 @@ int main()
       cout<<"Całkowita ilość wektorów: "<<Vector3D::AllAmountVector()<<endl;
       cout<<"***************************"<<endl;
       cout<<"W - Do przodu pod kątem"<<endl;
-      cout<<"z - Obrót"<<endl;
       cout<<"w,a,s,d - Obrót i do przodu"<<endl;
+      cout<<"z - Obrót w osi Z"<<endl;
+      cout<<"y - Obrót w osi Y"<<endl;
+      cout<<"x - Obrót w osi Y"<<endl;
       cout<<"p - Zmiana drona"<<endl;
       cout<<"q - Wyjście"<<endl;
       cout<<"t - Zmiana prędkości"<<endl;
@@ -150,40 +152,52 @@ int main()
       case 'W':
         cout<<"Długość przesunięcia i kątX: ";
         cin>>length>>angle;
-        MainScene.MoveDrone(length,angle,X);
+        MainScene.MoveDroneUpDown(length,angle,X);
         break;
 
       case 'w':
         cout<<"Długość przesunięcia: ";
         cin>>length;
-        MainScene.MoveDrone(length,0,X);
+        MainScene.MoveDrone(length,X);
         break;
       
       case 's':
         cout<<"Długość przesunięcia: ";
         cin>>length;
-        MainScene.RotateDrone(180,X);
-        MainScene.MoveDrone(length,0,X);
+        MainScene.RotateDrone(180,X,'z');
+        MainScene.MoveDrone(length,X);
         break;
 
       case 'a':
         cout<<"Długość przesunięcia: ";
         cin>>length;
-        MainScene.RotateDrone(-90,X);
-        MainScene.MoveDrone(length,0,X);
+        MainScene.RotateDrone(-90,X,'z');
+        MainScene.MoveDrone(length,X);
         break;
       
       case 'd':
         cout<<"Długość przesunięcia: ";
         cin>>length;
-        MainScene.RotateDrone(90,X);
-        MainScene.MoveDrone(length,0,X);
+        MainScene.RotateDrone(90,X,'z');
+        MainScene.MoveDrone(length,X);
         break;
 
       case 'z':
         cout<<"Obrót: ";
         cin>>angle;
-        MainScene.RotateDrone(angle,X);
+        MainScene.RotateDrone(angle,X,'z');
+        break;
+
+      case 'y':
+        cout<<"Obrót: ";
+        cin>>angle;
+        MainScene.RotateDrone(angle,X,'y');
+        break;
+
+      case 'x':
+        cout<<"Obrót: ";
+        cin>>angle;
+        MainScene.RotateDrone(angle,X,'x');
         break;
 
       case 'p':

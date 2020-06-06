@@ -68,6 +68,12 @@ class Rectangle : public Figure
     */
     void rotate(double angle) override;
     /*!
+    * \brief Obrót drona góra, dół(oś Y)
+    * \param angle Kąt obrotu
+    */
+    void rotateY(double angle);
+    void rotateX(double angle);
+    /*!
     * \brief Zwrócenie macierzy rotacji figury
     */
     MatrixRot const GetRotation() const;

@@ -17,6 +17,8 @@ public:
     void move(double length) override;
     void moveUpDown(double length, double angle) override;
     void rotate(double angle) override;
+    void rotateY(double angle);
+    void rotateX(double angle);
     //int AmountFigures() override;
 };
 
