@@ -19,8 +19,6 @@ class Figure
 {
     
     protected:
-    
-    
     /*!
     * \brief Macierz rotacji figury
     */
@@ -90,11 +88,19 @@ class Figure
     */
     virtual void rotate(double angle) {}
     /*!
+    * \brief Obrót drona oś Y)
+    * \param angle Kąt obrotu
+    */
+    virtual void rotateY(double angle) {}
+    /*!
+    * \brief Obrót drona oś X
+    * \param angle Kąt obrotu
+    */
+    virtual void rotateX(double angle) {}
+    /*!
     * \brief Zwraca środek figury
     */
     virtual Vector3D & GetCenter() =0;
-
-   // virtual int AmountFigures()=0;
 };
 
 #endif

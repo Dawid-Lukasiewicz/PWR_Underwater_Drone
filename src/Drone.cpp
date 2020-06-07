@@ -4,6 +4,7 @@
 Drone::Drone(std::shared_ptr<Rotator> rotator1, const Vector3D *nodes, const Vector3D &center, const MatrixRot &rotation, std::shared_ptr<drawNS::Draw3DAPI> gnuptr,const std::string & color)
 : Rectangle(nodes, center, rotation, gnuptr, color)
 {
+    //Drone::GetAmount()++;
     RotatorPtr[0]=rotator1;
     std::shared_ptr<Rotator> rotator2=std::make_shared<Rotator>(*rotator1);
     RotatorPtr[1]=rotator2;
@@ -21,7 +22,9 @@ Drone::Drone(std::shared_ptr<Rotator> rotator1, const Vector3D *nodes, const Vec
 }
 
 Drone::~Drone()
-{}
+{
+    //Drone::GetAmount()--;
+}
 
 void Drone::draw()
 {
@@ -109,7 +112,6 @@ double Drone::GetRay()const
 
 Vector3D Drone::GetNodes(int indeks)const
 {
-    //std::cout<<"indeks: "<<indeks<<std::endl;
     if(indeks>=0&&indeks<8)
         return Nodes[indeks];
     else
@@ -131,3 +133,9 @@ bool Drone::collision(const InterfaceDrone & MovingDrone)
     else
         return false;
 }
+/*
+int & Drone::GetAmount()
+{
+    return Amount;
+}
+*/

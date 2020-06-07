@@ -11,6 +11,8 @@
 */
 class Drone : public Rectangle, public InterfaceDrone, public Obstacle
 {
+    protected:
+    
     /*!
     * \brief Identyfikator głowy drona 
     */
@@ -25,6 +27,7 @@ class Drone : public Rectangle, public InterfaceDrone, public Obstacle
     std::shared_ptr<Rotator> RotatorPtr[2];
 
     public:
+    
     /*!
     * \brief Brak kontruktora bezparametrycznego 
     */
@@ -59,9 +62,16 @@ class Drone : public Rectangle, public InterfaceDrone, public Obstacle
     * \param angle Kąt obrotu
     */
     void rotate(double angle)override;
-
-    void rotateY(double angle);
-    void rotateX(double angle);
+    /*!
+    * \brief  Obrót drona wokół osi y
+    * \param angle Kąt obrotu
+    */
+    void rotateY(double angle)override;
+    /*!
+    * \brief  Obrót drona wokół osi x
+    * \param angle Kąt obrotu
+    */
+    void rotateX(double angle)override;
     /*!
     * \brief Natychmiastowe przesunięcie drona na wskazane miejsce
     * \param vec Wektor współrzędnych 
@@ -96,6 +106,8 @@ class Drone : public Rectangle, public InterfaceDrone, public Obstacle
     * \param MovingDrone Poruszający się dron
     */
     bool collision(const InterfaceDrone & MovingDrone)override;
+    //static int Amount;
+    //static int & GetAmount();
 };
 
 #endif

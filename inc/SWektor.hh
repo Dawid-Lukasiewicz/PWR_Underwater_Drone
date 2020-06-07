@@ -22,7 +22,6 @@ class SWektor
   SWektor();                                      //Kontruktor bezparametryczny
   SWektor(T *dane);                               //Kontruktor dwuparametryczny
   SWektor(const SWektor & nowy);                  //Kontruktor kopiujący
-  //SWektor(SWektor && nowy);                       //Kontruktor przenoszący
   ~SWektor();                                     //Destruktor
   T operator *(const SWektor & W2)const;          //Iloczyn skalarny
   SWektor operator =(const T & W2);               //Przypisanie wartości pod każdą zmienną wektora
@@ -31,8 +30,8 @@ class SWektor
   SWektor operator -=(const SWektor & W2);        //Odejmowanie wektorów od istniejącego wektora
   SWektor operator -(const SWektor & W2)const;    //Odejmowanie wektorów
   SWektor operator *(const T & stala)const;       //Mnożenie wektora przez liczbę
-  bool operator ==(const SWektor & W2)const;
-  bool operator !=(const SWektor & W2)const;
+  bool operator ==(const SWektor & W2)const;      //Porównanie wektorów
+  bool operator !=(const SWektor & W2)const;      //
   const T & operator[] (int indeks)const;         //Zwraca liczbę wskazaną indeksem i nie zmienia jej
   T & operator[] (int indeks);                    //Zwraca liczbę wskazaną indeksem
   int Pobierz_Wymiar() const;                     //Zwraca liczbę wymiaru/rozmiaru wektora

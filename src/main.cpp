@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
-#include "SWektor.hh"
-#include "SMacierz.hh"
-#include "Rectangle.hh"
+//#include "SWektor.hh"
+//#include "SMacierz.hh"
+//#include "Rectangle.hh"
 #include "Drone.hh"
 #include "Rotator.hh"
 #include "Surface.hh"
@@ -11,15 +11,16 @@
 
 using namespace std;
 using Vector3D = SWektor<double,ROZMIAR>;
-
+/*
 void wait4key() {
   do {
     std::cout << "\n Press m key to continue..." << std::endl;
   } while(std::cin.get() != 'm');
 }
-
+*/
 int main()
 {   
+    //Drone::Amount=0;
     double angle, length;
     int speed;
     std::shared_ptr<drawNS::APIGnuPlot3D> g = std::make_shared<drawNS::APIGnuPlot3D>(150,-150,150,-150,150,-150,-1);
@@ -51,12 +52,7 @@ int main()
     Vector3D Surftab1(TabSurf);
     TabSurf[2]=-100;
     Vector3D Surftab2(TabSurf);
-    /*vector<shared_ptr<Surface>>SurfaceVector
-    {
-      make_shared<Obstacle>(g,Surftab1,"black"),
-      make_shared<Obstacle>(g,Surftab2,"blue")
-    };*/
-
+    
     /*Inicjalizacja przeszkód/pudełek*/
     double BoxVec[3]={80,60,50};
     Vector3D BoxCenter1(BoxVec);
@@ -83,13 +79,17 @@ int main()
     plik.close();
     BoxCenter2[0]=-70;BoxCenter2[1]=-50;BoxCenter2[2]=50;
     BoxesVector.push_back(make_shared<Box>(BoxNodes,BoxCenter2,MacObrotu,g,"yellow"));
+
     /*Inicjalizacja Drona*/
     vector<shared_ptr<Drone>>DroneVector;
     DroneVector.push_back(dynamic_pointer_cast<Drone>(BoxesVector[0]));
     DroneVector.push_back(dynamic_pointer_cast<Drone>(BoxesVector[1]));
     DroneVector.push_back(dynamic_pointer_cast<Drone>(BoxesVector[2]));
-    
-    /*Konieci inicjalizacji*/
+
+    /***********************
+    Konieci inicjalizacji
+    ***********************/
+
     Scene MainScene(DroneVector,BoxesVector);
     MainScene.Draw();
     cout<<"***************************"<<endl;
@@ -121,13 +121,10 @@ int main()
     }
       while(GitGut);
     do{
-      /*
-      cout<<"r - Do góry"<<endl;
-      cout<<"f - W dół"<<endl;
-      cout<<"h - Teleportacja"<<endl;*/
       cout<<"***************************"<<endl;
-      cout<<"Ilość: "<<Vector3D::AmountVector()<<endl;
+      cout<<"Ilość wektorów: "<<Vector3D::AmountVector()<<endl;
       cout<<"Całkowita ilość wektorów: "<<Vector3D::AllAmountVector()<<endl;
+      //cout<<"Ilość dronów: "<<Drone::GetAmount()<<endl;
       cout<<"***************************"<<endl;
       cout<<"W - Do przodu pod kątem"<<endl;
       cout<<"w,a,s,d - Obrót i do przodu"<<endl;
@@ -136,19 +133,12 @@ int main()
       cout<<"x - Obrót w osi Y"<<endl;
       cout<<"p - Zmiana drona"<<endl;
       cout<<"q - Wyjście"<<endl;
-      cout<<"t - Zmiana prędkości"<<endl;
+      cout<<"t - Zmiana częstotliwości rysowania"<<endl;
       cout<<endl;
 
       cin>>znak;
       switch (znak)
       {
-        /*
-      case 'h':
-        cout<<"Teleportacja na koordynaty: ";
-        cin>>VecInSwitch;
-        Drone1.Drone::move_to(VecInSwitch);
-        break;
-        */
       case 'W':
         cout<<"Długość przesunięcia i kątX: ";
         cin>>length>>angle;

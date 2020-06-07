@@ -6,7 +6,6 @@
 class SixPrism : public Figure
 {
 protected:
-//static int HowManyFigures;
 Vector3D Nodes[12];
     
 public:
@@ -17,8 +16,8 @@ public:
     void move(double length) override;
     void moveUpDown(double length, double angle) override;
     void rotate(double angle) override;
-    void rotateY(double angle);
-    void rotateX(double angle);
+    void rotateY(double angle)override;
+    void rotateX(double angle)override;
     //int AmountFigures() override;
 };
 

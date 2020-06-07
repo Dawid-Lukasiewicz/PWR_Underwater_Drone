@@ -68,11 +68,15 @@ class Rectangle : public Figure
     */
     void rotate(double angle) override;
     /*!
-    * \brief Obrót drona góra, dół(oś Y)
+    * \brief Obrót drona oś Y)
     * \param angle Kąt obrotu
     */
-    void rotateY(double angle);
-    void rotateX(double angle);
+    void rotateY(double angle)override;
+    /*!
+    * \brief Obrót drona oś X
+    * \param angle Kąt obrotu
+    */
+    void rotateX(double angle)override;
     /*!
     * \brief Zwrócenie macierzy rotacji figury
     */
