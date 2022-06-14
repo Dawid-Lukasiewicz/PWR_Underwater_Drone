@@ -232,11 +232,8 @@ T SMacierz<T,SIZE>::Wyznacznik_Gaussa() const
                 int j;
                 for(j=i; j<M.Rozmiar; j++)
                 {
-                    //std::cout<<"Być1 "<<j<<std::endl;
-                    //std::cout<<"Wiersz1 "<<std::abs(M[j][i])<<std::endl;
                     if(abs(M[j][i])>E)
                     {
-                        //std::cout<<"Być2 "<<j<<std::endl;
                         SWektor<T,SIZE> Pom = M[i]; 
                         M[i] = M[j];
                         M[j] = Pom;
