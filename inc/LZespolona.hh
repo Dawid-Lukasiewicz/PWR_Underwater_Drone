@@ -5,6 +5,7 @@
 #include<cmath>
 
 class  Zespolona {
+  private:
   double   Re;    
   double   Im;    
 

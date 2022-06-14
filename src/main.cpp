@@ -1,8 +1,5 @@
 #include <iostream>
 #include <fstream>
-//#include "SWektor.hh"
-//#include "SMacierz.hh"
-//#include "Rectangle.hh"
 #include "Drone.hh"
 #include "Rotator.hh"
 #include "Surface.hh"
