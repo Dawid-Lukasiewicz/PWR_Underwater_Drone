@@ -30,12 +30,12 @@ int main()
     MatrixRot MacObrotu;
     Vector3D VecNodes[8], VecInSwitch;
 
-    plik.open("plik_body.txt", std::fstream::out);
+    plik.open("./utils/plik_body.txt", std::fstream::out);
     for(int i=0; i<8; i++)
         plik >> VecNodes[i];
     plik.close();
 
-    plik.open("plik_rotators.txt", std::fstream::out);
+    plik.open("./utils/plik_rotators.txt", std::fstream::out);
     for(int i=0; i<3; i++)
         plik >> dRotatorVec[i];
     plik.close();
@@ -56,7 +56,7 @@ int main()
     BoxVec[0]=-85;
     BoxVec[1]=60;
     Vector3D BoxCenter2(BoxVec),BoxNodes[8];
-    plik.open("Boxes_body.txt", std::fstream::out);
+    plik.open("./utils/Boxes_body.txt", std::fstream::out);
     for(int i=0; i<8; i++)
         plik >> BoxNodes[i];
     plik.close();
@@ -70,7 +70,7 @@ int main()
       shared_ptr<Obstacle>(new Surface(g,Surftab1,"black")),
       shared_ptr<Obstacle>(new Surface(g,Surftab2,"blue"))
     };
-    plik.open("Boxes2_body.txt", std::fstream::out);
+    plik.open("./utils/Boxes2_body.txt", std::fstream::out);
     for(int i=0; i<8; i++)
         plik >> BoxNodes[i];
     plik.close();
